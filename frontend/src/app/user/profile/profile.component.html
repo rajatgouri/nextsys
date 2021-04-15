@@ -1,0 +1,105 @@
+<!-- Header -->
+<app-header></app-header>
+
+<!-- Top  banner -->
+<div id="back-photo">
+  <img
+    src="https://wallpapercave.com/wp/wp2089935.jpg"
+    id="back-src"
+    class="back-img"
+    alt=""
+  />
+  <a id="change-image-button1" data-toggle="modal" data-target="#exampleModal"
+    ><i class="fa fa-edit" (click)="openModal('https://www.w3schools.com/howto/img_avatar.png', 'Cover Photo')"></i
+  ></a>
+</div>
+
+<div id="profile-photo">
+  <img src="../../../assets/images/img_avatar.png" id="profile-src" />
+  <a id="change-image-button" data-toggle="modal" data-target="#exampleModal"
+    ><i class="fa fa-edit" (click)="openModal('https://www.w3schools.com/howto/img_avatar.png', 'Avatar')"></i
+  ></a>
+</div>
+<!-- Top banner end -->
+
+
+<!-- summer looks -->
+<div class="container mt-5">
+  <h1 class="text-center">Summer Looks</h1>
+  <div class="row mt-5">
+    <div class="col-12">
+      <ngx-slick-carousel
+        class="carousel carousel-row"
+        #slickModal="slick-carousel"
+        [config]="slideConfig"
+      >
+        <div ngxSlickItem *ngFor="let slide of slides" class="slide p-2">
+          <div class="card shadow rounded">
+            <div class="card-body p-0">
+              <img class="product-img w-100" src="{{ slide.img }}" />
+              <div class="m-2">
+                <h5>{{ slide.name }}</h5>
+                <div class="price-container">
+                  <span class="text-success">Price:</span>
+                  <span> {{ slide.price }}$</span>
+                  <span class="text-danger small ml-2"
+                    >( {{ slide.discount }}% off )</span
+                  >
+                </div>
+                <div class="mt-2">
+                  <button (click)="addToCollection()" class="btn btn-success btn-sm">
+                    Add
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ngx-slick-carousel>
+    </div>
+  </div>
+</div>
+
+<!-- Summer Looks -->
+
+<!-- Christmas looks -->
+<div class="container mt-5">
+  <h1 class="text-center">Christmas Looks</h1>
+  <div class="row mt-5">
+    <div class="col-12">
+      <ngx-slick-carousel
+        class="carousel carousel-row"
+        #slickModal="slick-carousel"
+        [config]="slideConfig"
+      >
+        <div ngxSlickItem *ngFor="let slide of slides" class="slide p-2">
+          <div class="card shadow rounded">
+            <div class="card-body p-0">
+              <img class="product-img w-100" src="{{ slide.img }}" />
+              <div class="m-2">
+                <h5>{{ slide.name }}</h5>
+                <div class="price-container">
+                  <span class="text-success">Price:</span>
+                  <span> {{ slide.price }}$</span>
+                  <span class="text-danger small ml-2"
+                    >( {{ slide.discount }}% off )</span
+                  >
+                </div>
+                <div class="mt-2">
+                  <button (click)="addToCollection()" class="btn btn-success btn-sm">
+                    Add
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ngx-slick-carousel>
+    </div>
+  </div>
+</div>
+<!-- Christas Looks end -->
+
+
+<!-- footer -->
+<app-footer></app-footer>

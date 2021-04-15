@@ -1,0 +1,64 @@
+/* You can add global styles to this file, and also import other style files */
+
+.row {
+    width: 100%;
+    margin-left: 1px !important;
+    margin-right: 1px !important;
+}
+
+.carousel.carousel-row {
+  .slick-list {
+    overflow: hidden;
+    width: 100%;
+    
+    .slide {
+      img {
+        max-height: 100%;
+      }
+    }
+  }
+
+  .slick-next::before {
+      color: blue;
+  }
+
+  .slick-prev::before {
+    color: blue;
+}
+
+  .slick-dots {
+    bottom: -25px;
+
+    li {
+    //   background: #fdb45e;
+      margin: 0;
+
+      button {
+        &::before {
+          font-size: 14px;
+          color: rgb(58, 55, 55);
+        }
+      }
+
+      
+        
+      
+
+      &:first-child {
+        border-top-left-radius: 3px;
+      }
+
+      &:last-child {
+        border-top-right-radius: 3px;
+      }
+    }
+
+    li.slick-active {
+      button {
+        &::before {
+          color: rgb(207, 39, 39);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+<div class="modal-header">
+    <h4 class="modal-title" translate>{{title}} </h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    
+    <div class="preview">
+        <image-cropper
+        [imageChangedEvent]="imageChangedEvent"
+        [maintainAspectRatio]="true"
+        [aspectRatio]="4 / 3"
+        format="png"
+        [imageBase64]="imageBase64String"
+        (imageCropped)="imageCropped($event)"
+    ></image-cropper>
+
+    </div>
+    
+    <div class="input mb-2">
+        <input type="file" class="form-control" (change)="fileChangeEvent($event)" />
+    </div>
+
+    <button class="btn btn-primary" (click)="onSelect()">Select</button>&nbsp;
+    <button class="btn btn-warning" (click)="activeModal.close('Cancel')" >Cancel</button>
+  </div>
+  
