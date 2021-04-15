@@ -1,3 +1,120 @@
 <app-header></app-header>
-<p class="text-primary">home works!</p>
+
+<!-- banner carousel end -->
+<div id="demo" class="carousel slide" data-ride="carousel">
+    <ul class="carousel-indicators">
+      <li data-target="#demo" data-slide-to="0" class="active"></li>
+      <li data-target="#demo" data-slide-to="1"></li>
+      <li data-target="#demo" data-slide-to="2"></li>
+    </ul>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/Fashion/Event/HPFF/AFHeader/AF_PC_top_header.jpg" alt="Los Angeles" width="1100" height="500">
+        <div class="carousel-caption">
+          <h3>Fresh arrival</h3>
+          <p></p>
+        </div>   
+      </div>
+      <div class="carousel-item">
+        <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/Fashion/Event/HPFF/Eventpage/MF_WF_Headers/PC/2.jpg" alt="Chicago" width="1100" height="500">
+        <div class="carousel-caption">
+          <h3>Summer Collection</h3>
+          <p></p>
+        </div>   
+      </div>
+      <div class="carousel-item">
+        <img src="https://images-eu.ssl-images-amazon.com/images/G/31/img21/Fashion/Event/HPFF/Eventpage/MF_WF_Headers/PC/6.jpg" alt="New York" width="1100" height="500">
+        <div class="carousel-caption">
+          <h3>Women's Special</h3>
+          <p></p>
+        </div>   
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo" data-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </a>
+  </div>
+<!-- banner carousel end -->
+
+  
+<!-- summer looks -->
+<div class="container mt-5">
+    <h1 class="text-center">Summer Looks</h1>
+    <div class="row mt-5">
+      <div class="col-12">
+        <ngx-slick-carousel
+          class="carousel carousel-row"
+          #slickModal="slick-carousel"
+          [config]="slideConfig"
+        >
+          <div ngxSlickItem *ngFor="let slide of slides" class="slide p-2">
+            <div class="card shadow rounded">
+              <div class="card-body p-0">
+                <img class="product-img w-100" src="{{ slide.img }}" />
+                <div class="m-2">
+                  <h5>{{ slide.name }}</h5>
+                  <div class="price-container">
+                    <span class="text-success">Price:</span>
+                    <span> {{ slide.price }}$</span>
+                    <span class="text-danger small ml-2"
+                      >( {{ slide.discount }}% off )</span
+                    >
+                  </div>
+                  <div class="mt-2">
+                    <button (click)="addToCollection()" class="btn btn-success btn-sm">
+                      Add
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ngx-slick-carousel>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Summer Looks -->
+  
+  <!-- Christmas looks -->
+  <div class="container mt-5 mb-5">
+    <h1 class="text-center">Christmas Looks</h1>
+    <div class="row mt-5">
+      <div class="col-12">
+        <ngx-slick-carousel
+          class="carousel carousel-row"
+          #slickModal="slick-carousel"
+          [config]="slideConfig"
+        >
+          <div ngxSlickItem *ngFor="let slide of slides" class="slide p-2">
+            <div class="card shadow rounded">
+              <div class="card-body p-0">
+                <img class="product-img w-100" src="{{ slide.img }}" />
+                <div class="m-2">
+                  <h5>{{ slide.name }}</h5>
+                  <div class="price-container">
+                    <span class="text-success">Price:</span>
+                    <span> {{ slide.price }}$</span>
+                    <span class="text-danger small ml-2"
+                      >( {{ slide.discount }}% off )</span
+                    >
+                  </div>
+                  <div class="mt-2">
+                    <button (click)="addToCollection()" class="btn btn-success btn-sm">
+                      Add
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ngx-slick-carousel>
+      </div>
+    </div>
+  </div>
+  <!-- Christas Looks end -->
+
 <app-footer></app-footer>

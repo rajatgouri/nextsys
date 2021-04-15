@@ -18,11 +18,11 @@
   }
 
   .slick-next::before {
-      color: rgb(36, 134, 247);
+      color: #1e1f26;
   }
 
   .slick-prev::before {
-    color: rgb(36, 134, 247);
+    color: #1e1f26;
 }
 
   .slick-dots {
@@ -55,7 +55,7 @@
     li.slick-active {
       button {
         &::before {
-          color: rgb(36, 134, 247);
+          color: #1e1f26;
         }
       }
     }

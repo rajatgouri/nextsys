@@ -11,18 +11,48 @@ import { ImageModalComponent } from '../image-modal/image-modal.component';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private modalService: NgbModal) { }
-
   slides = [
     
     {
-      img: "https://images-na.ssl-images-amazon.com/images/I/61tZQmRl5oL._UX569_.jpg",
+      img: "https://images-na.ssl-images-amazon.com/images/I/81Yqx-u2z4L._UY550_.jpg",
       name: "Goggles",
       price: 150,
       currency: 'USD',
       discount: 5,
       description: 'This product is so cool'
-    }
+    },
+    {
+      img: "https://images-na.ssl-images-amazon.com/images/I/61jSkUzUykL._UY500_.jpg",
+      name: "Goggles",
+      price: 150,
+      currency: 'USD',
+      discount: 5,
+      description: 'This product is so cool'
+    },
+    {
+      img: "https://images-na.ssl-images-amazon.com/images/I/71UqTV-LHnL._UX569_.jpg",
+      name: "Goggles",
+      price: 150,
+      currency: 'USD',
+      discount: 5,
+      description: 'This product is so cool'
+    },
+    {
+      img: "https://images-na.ssl-images-amazon.com/images/I/71m6yJ1IUiL._UX569_.jpg",
+      name: "Goggles",
+      price: 150,
+      currency: 'USD',
+      discount: 5,
+      description: 'This product is so cool'
+    },
+    {
+      img: "https://images-na.ssl-images-amazon.com/images/I/814qtDhF22L._UY500_.jpg",
+      name: "Goggles",
+      price: 150,
+      currency: 'USD',
+      discount: 5,
+      description: 'This product is so cool'
+    },
 
   ];
   
@@ -58,6 +88,10 @@ export class ProfileComponent implements OnInit {
       }
     ]
   };
+  
+  
+  constructor(private modalService: NgbModal) { }
+
   
   onSaveImage() {
 
