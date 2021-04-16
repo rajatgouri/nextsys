@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const routes = [
     'auth',
-    'product'
+    'product',
+    'collection'
 ];
 
 module.exports = {

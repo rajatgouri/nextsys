@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CollectionService } from 'src/app/services/collection.service';
+import { ProductService } from 'src/app/services/product.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -8,51 +10,8 @@ import Swal from 'sweetalert2';
 })
 export class HomeComponent implements OnInit {
 
-  slides = [
-    
-    {
-      img: "https://images-na.ssl-images-amazon.com/images/I/81Yqx-u2z4L._UY550_.jpg",
-      name: "Goggles",
-      price: 150,
-      currency: 'USD',
-      discount: 5,
-      description: 'This product is so cool'
-    },
-    {
-      img: "https://images-na.ssl-images-amazon.com/images/I/61jSkUzUykL._UY500_.jpg",
-      name: "Goggles",
-      price: 150,
-      currency: 'USD',
-      discount: 5,
-      description: 'This product is so cool'
-    },
-    {
-      img: "https://images-na.ssl-images-amazon.com/images/I/71UqTV-LHnL._UX569_.jpg",
-      name: "Goggles",
-      price: 150,
-      currency: 'USD',
-      discount: 5,
-      description: 'This product is so cool'
-    },
-    {
-      img: "https://images-na.ssl-images-amazon.com/images/I/71m6yJ1IUiL._UX569_.jpg",
-      name: "Goggles",
-      price: 150,
-      currency: 'USD',
-      discount: 5,
-      description: 'This product is so cool'
-    },
-    {
-      img: "https://images-na.ssl-images-amazon.com/images/I/814qtDhF22L._UY500_.jpg",
-      name: "Goggles",
-      price: 150,
-      currency: 'USD',
-      discount: 5,
-      description: 'This product is so cool'
-    },
-    
-
-  ];
+  summerSlides: any = [];
+  christmasSlides: any = [];
   
 
   public slideConfig: any = {
@@ -89,10 +48,17 @@ export class HomeComponent implements OnInit {
   };
   
 
-  constructor() { }
+  constructor(private productService: ProductService, private collectionService: CollectionService) { }
 
 
   ngOnInit(): void {
+    this.productService.getProducts().subscribe((response: any) => {
+      console.log(response)
+      let summerData = response.data.filter((d:any) => d.collection._key === 'summer');
+      this.summerSlides = summerData;
+      let christmasData = response.data.filter((d:any)=> d.collection._key === 'christmas');
+      this.christmasSlides = christmasData;
+    })
   }
 
 
@@ -113,8 +79,13 @@ toast (text: any) {
   })
 }
 
-addToCollection() {
+addToCollection(key: any) {
+  this.collectionService.addToCollection(key).subscribe((response: any) => {
+   console.log(response);
+  })
   this.toast('Added To The Collection')
+
+
 }
 
 }

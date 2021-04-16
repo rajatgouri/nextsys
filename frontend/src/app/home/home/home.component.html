@@ -45,21 +45,21 @@
           #slickModal="slick-carousel"
           [config]="slideConfig"
         >
-          <div ngxSlickItem *ngFor="let slide of slides" class="slide p-2">
+          <div ngxSlickItem *ngFor="let slide of summerSlides" class="slide p-2">
             <div class="card shadow rounded">
               <div class="card-body p-0">
-                <img class="product-img w-100" src="{{ slide.img }}" />
+                <img class="product-img w-100" src="{{ slide.product.img }}" />
                 <div class="m-2">
-                  <h5>{{ slide.name }}</h5>
+                  <h5>{{ slide.product.name }}</h5>
                   <div class="price-container">
                     <span class="text-success">Price:</span>
-                    <span> {{ slide.price }}$</span>
+                    <span> {{ slide.product.price }}$</span>
                     <span class="text-danger small ml-2"
-                      >( {{ slide.discount }}% off )</span
+                      >( {{ slide.product.discount }}% off )</span
                     >
                   </div>
                   <div class="mt-2">
-                    <button (click)="addToCollection()" class="btn btn-success btn-sm">
+                    <button (click)="addToCollection(slide.product._key)" class="btn btn-success btn-sm">
                       Add
                     </button>
                   </div>
@@ -84,21 +84,21 @@
           #slickModal="slick-carousel"
           [config]="slideConfig"
         >
-          <div ngxSlickItem *ngFor="let slide of slides" class="slide p-2">
+          <div ngxSlickItem *ngFor="let slide of christmasSlides" class="slide p-2">
             <div class="card shadow rounded">
               <div class="card-body p-0">
-                <img class="product-img w-100" src="{{ slide.img }}" />
+                <img class="product-img w-100" src="{{ slide.product.img }}" />
                 <div class="m-2">
-                  <h5>{{ slide.name }}</h5>
+                  <h5>{{ slide.product.name }}</h5>
                   <div class="price-container">
                     <span class="text-success">Price:</span>
-                    <span> {{ slide.price }}$</span>
+                    <span> {{ slide.product.price }}$</span>
                     <span class="text-danger small ml-2"
-                      >( {{ slide.discount }}% off )</span
+                      >( {{ slide.product.discount }}% off )</span
                     >
                   </div>
                   <div class="mt-2">
-                    <button (click)="addToCollection()" class="btn btn-success btn-sm">
+                    <button (click)="addToCollection(slide.product._key)" class="btn btn-success btn-sm">
                       Add
                     </button>
                   </div>

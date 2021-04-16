@@ -1,6 +1,7 @@
 const db = require('./database');
 const roles = require('./roles')
-const user = require('./product-and-collections')
+const productAndCollection = require('./product-and-collections')
+const user = require('./user');
 	
 exports.user = () => {
     let collection = db.collection('user');
@@ -8,6 +9,7 @@ exports.user = () => {
         .create()
         .then(() => {
             console.log('user collection created.')
+            user.create()
         })
         .catch(err => {
             console.log(err)
@@ -36,7 +38,7 @@ exports.collections = () => {
         .create()
         .then(() => {
             console.log('collections created.')
-            user.createCollections()
+            productAndCollection.createCollections()
         })
         .catch(err => {
             console.log(err)
@@ -50,7 +52,19 @@ exports.products = () => {
         .create()
         .then(() => {
             console.log('products created.')
-            user.createProducts()
+            productAndCollection.createProducts()
+        })
+        .catch(err => {
+            console.log(err)
+        })
+}
+
+exports.userCollection = () => {
+    let collection = db.collection('userCollection');
+    collection
+        .create()
+        .then(() => {
+            console.log('user collection created.')
         })
         .catch(err => {
             console.log(err)

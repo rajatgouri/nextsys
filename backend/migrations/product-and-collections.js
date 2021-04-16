@@ -46,7 +46,7 @@ exports.createProducts = () => {
     {
         _key: 'product2',
         name: 'product2',
-        img: 'https://images-na.ssl-images-amazon.com/images/I/717VPWr51hL._UX569_.jpg',
+        img: 'https://images-na.ssl-images-amazon.com/images/I/61hh8wS16wL._UX569_.jpg',
         price: 140,
         discount: 5,
         currency: 'USD',
@@ -55,7 +55,7 @@ exports.createProducts = () => {
     {
         _key: 'product3',
         name: 'product3',
-        img: 'https://images-na.ssl-images-amazon.com/images/I/717VPWr51hL._UX569_.jpg',
+        img: 'https://m.media-amazon.com/images/I/61bu+Q0SwiL._SX569._SX._UX._SY._UY_.jpg',
         price: 350,
         discount: 4,
         currency: 'USD',
@@ -64,7 +64,7 @@ exports.createProducts = () => {
     {
         _key: 'product4',
         name: 'product4',
-        img: 'https://images-na.ssl-images-amazon.com/images/I/717VPWr51hL._UX569_.jpg',
+        img: 'https://images-na.ssl-images-amazon.com/images/I/81Yqx-u2z4L._UY500_.jpg',
         price: 50,
         discount: 1,
         currency: 'USD',
@@ -82,7 +82,7 @@ exports.createProducts = () => {
      {
         _key: 'product6',
         name: 'product6',
-        img: 'https://images-na.ssl-images-amazon.com/images/I/717VPWr51hL._UX569_.jpg',
+        img: 'https://images-na.ssl-images-amazon.com/images/I/81F3SWHhd%2BL._UX569_.jpg',
         price: 100,
         discount: 2,
         currency: 'USD',
@@ -91,7 +91,7 @@ exports.createProducts = () => {
      {
         _key: 'product7',
         name: 'product7',
-        img: 'https://images-na.ssl-images-amazon.com/images/I/717VPWr51hL._UX569_.jpg',
+        img: 'https://m.media-amazon.com/images/I/81DtftGvPzL._SX569._SX._UX._SY._UY_.jpg',
         price: 100,
         discount: 5,
         currency: 'USD',
@@ -100,7 +100,7 @@ exports.createProducts = () => {
     {
         _key: 'product8',
         name: 'product8',
-        img: 'https://images-na.ssl-images-amazon.com/images/I/717VPWr51hL._UX569_.jpg',
+        img: 'https://m.media-amazon.com/images/I/81vEpJyFz4L._SX569._SX._UX._SY._UY_.jpg',
         price: 100,
         discount: 5,
         currency: 'USD',
@@ -108,7 +108,7 @@ exports.createProducts = () => {
     }, {
         _key: 'product9',
         name: 'product9',
-        img: 'https://images-na.ssl-images-amazon.com/images/I/717VPWr51hL._UX569_.jpg',
+        img: 'https://m.media-amazon.com/images/I/81wr3PGBTYL._SX569._SX._UX._SY._UY_.jpg',
         price: 100,
         discount: 5,
         currency: 'USD',
@@ -117,7 +117,7 @@ exports.createProducts = () => {
     {
         _key: 'product10',
         name: 'product10',
-        img: 'https://images-na.ssl-images-amazon.com/images/I/717VPWr51hL._UX569_.jpg',
+        img: 'https://m.media-amazon.com/images/I/81DtftGvPzL._SX569._SX._UX._SY._UY_.jpg',
         price: 100,
         discount: 5,
         currency: 'USD',
@@ -126,7 +126,7 @@ exports.createProducts = () => {
     {
         _key: 'product11',
         name: 'product11',
-        img: 'https://images-na.ssl-images-amazon.com/images/I/717VPWr51hL._UX569_.jpg',
+        img: 'https://m.media-amazon.com/images/I/81KOt4lHhsL._SY741._SX._UX._SY._UY_.jpg',
         price: 250,
         discount: 10,
         currency: 'USD',

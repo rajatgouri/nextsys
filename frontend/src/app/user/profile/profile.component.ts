@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2'
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { ImageModalComponent } from '../image-modal/image-modal.component';
+import { CollectionService } from 'src/app/services/collection.service';
 
 
 @Component({
@@ -10,6 +11,9 @@ import { ImageModalComponent } from '../image-modal/image-modal.component';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
+
+  summerSlides: any = [];
+  christmasSlides: any = [];
 
   slides = [
     
@@ -90,7 +94,7 @@ export class ProfileComponent implements OnInit {
   };
   
   
-  constructor(private modalService: NgbModal) { }
+  constructor(private modalService: NgbModal, private collectionService: CollectionService) { }
 
   
   onSaveImage() {
@@ -127,9 +131,11 @@ export class ProfileComponent implements OnInit {
     })
   }
   
+  
   ngOnInit(): void {
+    
 
-  }
+}
 
 
   addToCollection() {
