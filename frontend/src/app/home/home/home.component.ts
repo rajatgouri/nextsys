@@ -54,10 +54,8 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.productService.getProducts().subscribe((response: any) => {
       console.log(response)
-      let summerData = response.data.filter((d:any) => d.collection._key === 'summer');
-      this.summerSlides = summerData;
-      let christmasData = response.data.filter((d:any)=> d.collection._key === 'christmas');
-      this.christmasSlides = christmasData;
+      this.summerSlides = response.data.filter((d:any) => d.collection._key === 'summer');
+      this.christmasSlides = response.data.filter((d:any)=> d.collection._key === 'christmas');
     })
   }
 
@@ -82,8 +80,9 @@ toast (text: any) {
 addToCollection(key: any) {
   this.collectionService.addToCollection(key).subscribe((response: any) => {
    console.log(response);
+    this.toast('Added To The Collection')
+
   })
-  this.toast('Added To The Collection')
 
 
 }

@@ -12,4 +12,7 @@ export class CollectionService {
   addToCollection(key: any) {
     return this.http.post(environment.baseUrl + 'collection/add-collection', {key: key});
   }
+  getCollection() {
+    return this.http.get(environment.baseUrl + 'collection/get-collection');
+  }
 }

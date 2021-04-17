@@ -15,50 +15,6 @@ export class ProfileComponent implements OnInit {
   summerSlides: any = [];
   christmasSlides: any = [];
 
-  slides = [
-    
-    {
-      img: "https://images-na.ssl-images-amazon.com/images/I/81Yqx-u2z4L._UY550_.jpg",
-      name: "Goggles",
-      price: 150,
-      currency: 'USD',
-      discount: 5,
-      description: 'This product is so cool'
-    },
-    {
-      img: "https://images-na.ssl-images-amazon.com/images/I/61jSkUzUykL._UY500_.jpg",
-      name: "Goggles",
-      price: 150,
-      currency: 'USD',
-      discount: 5,
-      description: 'This product is so cool'
-    },
-    {
-      img: "https://images-na.ssl-images-amazon.com/images/I/71UqTV-LHnL._UX569_.jpg",
-      name: "Goggles",
-      price: 150,
-      currency: 'USD',
-      discount: 5,
-      description: 'This product is so cool'
-    },
-    {
-      img: "https://images-na.ssl-images-amazon.com/images/I/71m6yJ1IUiL._UX569_.jpg",
-      name: "Goggles",
-      price: 150,
-      currency: 'USD',
-      discount: 5,
-      description: 'This product is so cool'
-    },
-    {
-      img: "https://images-na.ssl-images-amazon.com/images/I/814qtDhF22L._UY500_.jpg",
-      name: "Goggles",
-      price: 150,
-      currency: 'USD',
-      discount: 5,
-      description: 'This product is so cool'
-    },
-
-  ];
   
   public slideConfig: any = {
     slidesToShow: 4,
@@ -133,7 +89,12 @@ export class ProfileComponent implements OnInit {
   
   
   ngOnInit(): void {
-    
+    this.collectionService.getCollection().subscribe((response: any) => {
+      console.log(response);
+      this.summerSlides = response.data.filter((d: any) => d.product.collection === "collections/summer")
+      this.christmasSlides = response.data.filter((d: any) => d.product.collection === "collections/christmas")
+      
+    })
 
 }
 
