@@ -11,13 +11,15 @@ import { ImageModalComponent } from './image-modal/image-modal.component';
 
 
 const routes: Routes = [{
-  path: 'collection',
+  path: 'collection/:id',
   component: CollectionComponent
 },
   {
   path: 'profile',
   component: ProfileComponent
-}];
+},
+
+];
 
 
 @NgModule({
