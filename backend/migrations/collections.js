@@ -1,10 +1,14 @@
 const db = require('./database');
 const roles = require('./roles')
-const productAndCollection = require('./product-and-collections')
 const user = require('./user');
 	
 exports.user = () => {
-    let collection = db.collection('user');
+    let collection = db.collection('user', {
+        keyOptions: { 
+            type: "autoincrement", 
+            allowUserKeys: false 
+        } 
+    });
     collection
         .create()
         .then(() => {
@@ -18,7 +22,12 @@ exports.user = () => {
 
 
 exports.roles = () => {
-    let collection = db.collection('roles');
+    let collection = db.collection('roles', {
+        keyOptions: { 
+            type: "autoincrement", 
+            allowUserKeys: false 
+        } 
+    });
     collection
         .create()
         .then(() => {
@@ -33,40 +42,19 @@ exports.roles = () => {
 
 
 exports.collections = () => {
-    let collection = db.collection('collections');
+    let collection = db.collection('collections', {
+        keyOptions: { 
+            type: "autoincrement", 
+            allowUserKeys: false 
+        } 
+    });
     collection
         .create()
         .then(() => {
             console.log('collections created.')
-            productAndCollection.createCollections()
         })
         .catch(err => {
             console.log(err)
         })
 }
 
-
-exports.products = () => {
-    let collection = db.collection('products');
-    collection
-        .create()
-        .then(() => {
-            console.log('products created.')
-            productAndCollection.createProducts()
-        })
-        .catch(err => {
-            console.log(err)
-        })
-}
-
-exports.userCollection = () => {
-    let collection = db.collection('userCollection');
-    collection
-        .create()
-        .then(() => {
-            console.log('user collection created.')
-        })
-        .catch(err => {
-            console.log(err)
-        })
-}

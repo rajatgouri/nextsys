@@ -13,8 +13,6 @@ db.createDatabase('nextSys').then(() => {
         collections.user()
         collections.roles()
         collections.collections()
-        collections.products()
-        collections.userCollection()
     },
     err => console.error('Failed to create database:', err)
 );

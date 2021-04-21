@@ -8,18 +8,26 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CollectionComponent } from './collection/collection.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { ImageModalComponent } from './image-modal/image-modal.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { ProductsComponent } from './products/products.component';
 
 
-const routes: Routes = [{
-  path: 'collection/:id',
-  component: CollectionComponent
-},
+const routes: Routes = [
   {
   path: 'profile',
-  component: ProfileComponent
-},
-
-];
+  component: ProfileComponent,
+  children: [
+    {
+      path: '', redirectTo: 'collections', pathMatch: 'full'
+    },
+    {
+      path: 'collections', component:  CollectionComponent 
+    },
+    {
+      path: 'products', component:  ProductsComponent 
+    },
+  ]
+}];
 
 
 @NgModule({
@@ -27,6 +35,8 @@ const routes: Routes = [{
     ProfileComponent,
     CollectionComponent,
     ImageModalComponent,
+    SidebarComponent,
+    ProductsComponent,
   ],
   imports: [
     CommonModule,

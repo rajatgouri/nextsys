@@ -9,7 +9,7 @@ import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     CommonModule,
@@ -17,7 +17,7 @@ import { RouterModule } from '@angular/router';
   ],
   exports:[
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
   ]
 })
 export class SharedModule { }

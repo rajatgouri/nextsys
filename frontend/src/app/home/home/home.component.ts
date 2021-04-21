@@ -10,14 +10,14 @@ import Swal from 'sweetalert2';
 })
 export class HomeComponent implements OnInit {
 
-  summerSlides: any = [];
-  christmasSlides: any = [];
+
+  collections:any = [] 
   
 
   public slideConfig: any = {
     slidesToShow: 4,
     slidesToScroll: 1,
-    dots: true,
+    dots: false,
     arrows: true,
     autoplay: true,
     responsive: [
@@ -52,11 +52,7 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.productService.getProducts().subscribe((response: any) => {
-      console.log(response)
-      this.summerSlides = response.data.filter((d:any) => d.collection._key === 'summer');
-      this.christmasSlides = response.data.filter((d:any)=> d.collection._key === 'christmas');
-    })
+   
   }
 
 

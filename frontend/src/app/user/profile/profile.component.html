@@ -22,83 +22,14 @@
 </div>
 <!-- Top banner end -->
 
-
-<!-- summer looks -->
-<div class="container mt-5">
-  <h1 class="text-center">Summer Collections</h1>
-  <div class="row mt-5">
-    <div class="col-12">
-      <ngx-slick-carousel
-        class="carousel carousel-row"
-        #slickModal="slick-carousel"
-        [config]="slideConfig"
-      >
-        <div ngxSlickItem *ngFor="let slide of summerSlides" class="slide p-2">
-          <div class="card shadow rounded">
-            <div class="card-body p-0">
-              <img class="product-img w-100" src="{{ slide.product.img }}" />
-              <div class="m-2">
-                <h5>{{ slide.product.name }}</h5>
-                <div class="price-container">
-                  <span class="text-success">Price:</span>
-                  <span> {{ slide.product.price }}$</span>
-                  <span class="text-danger small ml-2"
-                    >( {{ slide.product.discount }}% off )</span
-                  >
-                </div>
-                <div class="mt-2">
-                  <button class="btn btn-success btn-sm">
-                    View
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </ngx-slick-carousel>
-    </div>
+<div class="row">
+  <div class="col-sm-3">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div class="col-sm-9">
+    <router-outlet></router-outlet>
   </div>
 </div>
-
-<!-- Summer Looks -->
-
-<!-- Christmas looks -->
-<div class="container mt-5">
-  <h1 class="text-center">Christmas Collections</h1>
-  <div class="row mt-5">
-    <div class="col-12">
-      <ngx-slick-carousel
-        class="carousel carousel-row"
-        #slickModal="slick-carousel"
-        [config]="slideConfig"
-      >
-        <div ngxSlickItem *ngFor="let slide of christmasSlides" class="slide p-2">
-          <div class="card shadow rounded">
-            <div class="card-body p-0">
-              <img class="product-img w-100" src="{{ slide.product.img }}" />
-              <div class="m-2">
-                <h5>{{ slide.product.name }}</h5>
-                <div class="price-container">
-                  <span class="text-success">Price:</span>
-                  <span> {{ slide.product.price }}$</span>
-                  <span class="text-danger small ml-2"
-                    >( {{ slide.product.discount }}% off )</span
-                  >
-                </div>
-                <div class="mt-2">
-                  <button class="btn btn-success btn-sm">
-                    View
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </ngx-slick-carousel>
-    </div>
-  </div>
-</div>
-<!-- Christas Looks end -->
 
 
 <!-- footer -->
