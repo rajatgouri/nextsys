@@ -19,31 +19,33 @@ export class SignupComponent implements OnInit {
     cpassword:new FormControl(null,[Validators.required,Validators.maxLength(10), Validators.minLength(8),this.createPasswordStrengthValidator(),this.createPasswordMatchValidator()])
   })
 
-  constructor(private authService:AuthService, private router: Router, private toastService: ToastService) { }
+  constructor(
+    private authService:AuthService,
+    private router: Router,
+    private toastService: ToastService
+    ) { }
 
   ngOnInit(): void {
+    if (this.authService.isAuthenticated()) {
+      this.router.navigate(['/user/profile']);
+    }
   }
 
   signup(){
     if(!this.signupForm.valid || (this.signupForm.controls.password.value != this.signupForm.controls.cpassword.value)) {
-      console.log('invalid Form'); return;
-      alert("Password")
+      console.log('invalid Form'); 
+      return;
     }
 
     // console.log(this.signupForm.value);
 
     this.authService.signup(this.signupForm.value).subscribe((response: any) =>{
-      console.log(response)
-      
       this.toastService.toast('signup successfully')
       this.router.navigate(['/auth/login'])
-
-
     }, error => {
       console.log('erroroor')
       console.log(error.error.msg)
       this.toastService.toast(error.error.msg)
-
     })
 
   }

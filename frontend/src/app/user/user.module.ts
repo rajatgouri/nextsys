@@ -10,11 +10,13 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 import { ImageModalComponent } from './image-modal/image-modal.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ProductsComponent } from './products/products.component';
+import {AuthGuardService} from '../services/auth-guard.service';
 
 
 const routes: Routes = [
   {
   path: 'profile',
+  canActivate: [AuthGuardService],
   component: ProfileComponent,
   children: [
     {

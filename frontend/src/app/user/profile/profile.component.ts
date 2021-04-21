@@ -3,7 +3,8 @@ import Swal from 'sweetalert2'
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { ImageModalComponent } from '../image-modal/image-modal.component';
 import { CollectionService } from 'src/app/services/collection.service';
-
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -50,7 +51,12 @@ export class ProfileComponent implements OnInit {
   };
   
   
-  constructor(private modalService: NgbModal, private collectionService: CollectionService) { }
+  constructor(
+    private modalService: NgbModal,
+    private collectionService: CollectionService,
+    private authService:AuthService,
+    private router: Router,
+    ) { }
 
   
   onSaveImage() {

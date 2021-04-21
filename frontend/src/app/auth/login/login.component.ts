@@ -19,17 +19,18 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService, private toastService : ToastService, private router: Router) { }
 
   ngOnInit(): void {
+    if (this.authService.isAuthenticated()) {
+      this.router.navigate(['/user/profile']);
+    }
   }
 
   login() {
     if(!this.loginForm.valid) {
       console.log('invalid'); return;
     }
-
     this.authService.login(this.loginForm.value).subscribe((response: any) => {
       this.router.navigate(['/user/profile'])
     }, error => {
-      console.log(error)
       this.toastService.toast(error)
 
     })

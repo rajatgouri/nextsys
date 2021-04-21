@@ -4,6 +4,8 @@ import {environment} from '../../environments/environment';
 import {catchError, tap} from 'rxjs/operators'
 import { throwError } from 'rxjs';
 import { ToastService } from './toast.service';
+import { BehaviorSubject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -11,12 +13,17 @@ import { ToastService } from './toast.service';
 export class AuthService {
 
   user: any = {};
+  authenticationState = new BehaviorSubject(false);
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private router: Router
+    ) { }
 
   login(data: any) {
     return this.http.post(environment.baseUrl + 'auth/login', data).pipe(catchError(this.handleError),tap(async (resData: any) => {
       await localStorage.setItem('accessToken', resData.token);
+      this.authenticationState.next(true);
       this.getUser(resData.token);
       return resData;
     }))
@@ -45,6 +52,16 @@ export class AuthService {
 
   handleError(error:HttpErrorResponse) {
     return throwError(error.error)
+  }
+
+  logout(){
+    localStorage.clear();
+    this.router.navigate(['/auth/login']);
+    this.authenticationState.next(false);
+  }
+
+  isAuthenticated() {
+    return this.authenticationState.value || localStorage.getItem('accessToken');
   }
 
 }
