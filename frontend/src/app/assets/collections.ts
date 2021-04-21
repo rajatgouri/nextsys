@@ -2,15 +2,11 @@ import {products} from "./products";
 
 export const collections = [
     {
-    "name" : "Collection 1",
+    "name" : "Summer",
     "products" : products
     },
     {
-        "name" : "Collection 2",
-        "products" : products
-    },
-    {
-        "name" : "Collection 3",
+        "name" : "Winter",
         "products" : products
     },
 ]
