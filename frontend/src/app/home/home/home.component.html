@@ -35,17 +35,17 @@
               #slickModal="slick-carousel"
               [config]="slideConfig"
             >
-              <div ngxSlickItem *ngFor="let slide of collection.products" class="slide p-2">
+              <div ngxSlickItem *ngFor="let product of collection.products" class="slide p-2">
                 <div class="card shadow rounded">
                   <div class="card-body p-0">
-                    <img class="product-img w-100" src="{{ slide.product.img }}" />
+                    <img class="product-img w-100" src="../../../assets/images/product.png" />
                     <div class="m-2">
-                      <h5>{{ slide.product.name }}</h5>
+                      <h5>{{ product.name }}</h5>
                       <div class="price-container">
                         <span class="text-success">Price:</span>
-                        <span> {{ slide.product.price }}$</span>
+                        <span> {{ product.price }}$</span>
                         <span class="text-danger small ml-2"
-                          >( {{ slide.product.discount }}% off )</span
+                          >( {{ product.discount }}% off )</span
                         >
                       </div>
                       <div class="mt-2">

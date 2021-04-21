@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CollectionService } from 'src/app/services/collection.service';
 import { ProductService } from 'src/app/services/product.service';
+import { collections } from '../../assets/collections';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -11,7 +12,7 @@ import Swal from 'sweetalert2';
 export class HomeComponent implements OnInit {
 
 
-  collections:any = [] 
+  collections:any = collections; 
   
 
   public slideConfig: any = {
@@ -52,7 +53,7 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit(): void {
-   
+   console.log(this.collections);
   }
 
 
@@ -75,9 +76,7 @@ toast (text: any) {
 
 addToCollection(key: any) {
   this.collectionService.addToCollection(key).subscribe((response: any) => {
-   console.log(response);
     this.toast('Added To The Collection')
-
   })
 
 
