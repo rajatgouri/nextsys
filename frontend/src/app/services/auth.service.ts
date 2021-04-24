@@ -5,6 +5,7 @@ import {catchError, tap} from 'rxjs/operators'
 import { throwError } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
+import jwt_decode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,11 @@ export class AuthService {
 
   signup(data:any){
     return this.http.post(environment.baseUrl + 'auth/signup', data)
+  }
+
+  getUser(){
+    // @ts-ignore
+    return jwt_decode(localStorage.getItem('accessToken'));
   }
 
   checkUsername(data:any) {

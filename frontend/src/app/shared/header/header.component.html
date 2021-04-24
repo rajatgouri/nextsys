@@ -16,6 +16,7 @@
           </a>
         <div class="dropdown-menu" *ngIf="auth.isAuthenticated()">
           <a class="dropdown-item" routerLink="/user/profile">User Profile</a>
+          <a *ngIf="homeRoute" class="dropdown-item" [routerLink]="homeRoute">Home</a>
           <a class="dropdown-item clickable" (click)="auth.logout()">Logout</a>
         </div>
         <div class="dropdown-menu" *ngIf="!auth.isAuthenticated()">

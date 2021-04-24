@@ -26,8 +26,8 @@
 <div class="row">
   <div class="col-12">
     <div *ngFor="let collection of collections">
-      <div class="container mt-5">
-        <h1 class="text-center">{{ collection.name }} Collections</h1>
+      <div *ngIf="collection.products.length>0" class="container mt-5">
+        <h1 class="text-center">{{ collection.name }}</h1>
         <div class="row mt-5">
           <div class="col-12">
             <ngx-slick-carousel
@@ -38,7 +38,7 @@
               <div ngxSlickItem *ngFor="let product of collection.products" class="slide p-2">
                 <div class="card shadow rounded">
                   <div class="card-body p-0">
-                    <img class="product-img w-100" src="../../../assets/images/product.png" />
+                    <img class="product-img w-100" [src]="product.img" />
                     <div class="m-2">
                       <h5>{{ product.name }}</h5>
                       <div class="price-container">
@@ -71,3 +71,7 @@
 
 <!-- footer -->
 <app-footer></app-footer>
+
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">  
+  <p style="color: white">Please Wait. </p>  
+</ngx-spinner> 

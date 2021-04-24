@@ -6,11 +6,31 @@
           <div class="card-body">
             <div class="row">
               <div class="col-12">
-                <div *ngFor="let collection of adminCollections">
-                  <div class="card bg-light mb-3 collection-card">
+                <div *ngFor="let product of allProducts;let i = index">
+                  <div class="card bg-light mb-3 mt-3 collection-card">
+                    <img class="card-img-top" [src]="product.img" alt="Card image cap">
                     <div class="card-body">
-                      <h5 class="card-title collection text-center">{{collection.name}}</h5>
-                      <button class="btn btn-primary add-button mt-2" (click)="addCollection(collection)" [attr.disabled]="collection.disabled == true? true: null"><i class="fas fa-plus"></i></button>
+                      <h5 class="card-title collection">{{product.name}}</h5>
+                      <p class="card-text text-success font-weight-bold">
+                        {{product.currency}} {{product.price}}
+                        <span class="text-danger small ml-2"
+                        >( {{ product.discount }}% off )</span>
+                      </p>
+                      <button class="btn btn-primary add-button mt-2" (click)="toggleForm(i)" [attr.disabled]="product.disabled == true? true: null"><i class="fas fa-plus"></i></button>
+                      <div *ngIf="product.showForm" class="card bg-light mb-3 mt-1">
+                        <div class="card-body">
+                          <form [formGroup]="collectionForm">
+                            <div class="form-group dropdown">
+                              <label for="exampleFormControlSelect1">Select the Collection</label>
+                              <select formControlName="id" required class="form-control" placeholder="Collection" id="exampleFormControlSelect1">
+                                <option *ngFor="let collection of myCollections" [value]="collection._id">{{collection.name}}</option>
+                              </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary" (click)="addProduct(product._id)">Submit</button>
+                            <button type="submit" class="ml-2 btn btn-danger" (click)="toggleForm(i)">Close</button>
+                          </form>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -25,11 +45,17 @@
           <div class="card-body">
             <div class="row">
               <div class="col-12">
-                <div *ngFor="let collection of myCollections">
-                  <div class="card bg-light mb-3 collection-card">
+                <div *ngFor="let product of myProducts">
+                  <div class="card bg-light mb-3 mt-3 collection-card">
+                    <img class="card-img-top" [src]="product.img" alt="Card image cap">
                     <div class="card-body">
-                      <h5 class="card-title collection text-center">{{collection.name}}</h5>
-                      <button class="btn btn-danger add-button mt-2" (click)="removeCollection(collection)"><i class="fas fa-trash"></i></button>
+                      <h5 class="card-title collection">{{product.name}}</h5>
+                      <p class="card-text text-success font-weight-bold">
+                        {{product.currency}} {{product.price}}
+                        <span class="text-danger small ml-2"
+                        >( {{ product.discount }}% off )</span>
+                      </p>
+                      <button class="btn btn-danger add-button mt-2" (click)="removeProduct(product.collectionId,product._id)"><i class="fas fa-trash"></i></button>
                     </div>
                   </div>
                 </div>
@@ -40,3 +66,6 @@
       </div>
     </div>
   </div>
+  <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">  
+    <p style="color: white">Please Wait. </p>  
+  </ngx-spinner> 

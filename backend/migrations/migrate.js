@@ -10,9 +10,10 @@ const collections = require('./collections');
 
 db.createDatabase('nextSys').then(() => {
         console.log('Database created');
-        collections.user()
-        collections.roles()
-        collections.collections()
+        collections.user();
+        collections.roles();
+        collections.products();
+        collections.collections();
     },
     err => console.error('Failed to create database:', err)
 );

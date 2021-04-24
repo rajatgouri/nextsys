@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CollectionService } from '../../services/collection.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-collection',
@@ -9,6 +10,11 @@ import { CollectionService } from '../../services/collection.service';
 export class CollectionComponent implements OnInit {
   adminCollections : any = [];
   myCollections: any = [];
+  showForm : boolean = false;
+  
+  collectionForm : FormGroup=new FormGroup({
+    name: new FormControl(null,Validators.required)
+  });
 
   constructor(
     private collectionService : CollectionService
@@ -42,7 +48,7 @@ export class CollectionComponent implements OnInit {
   }
 
   removeCollection(collection:any) {
-    this.collectionService.removeCollection(collection.key).subscribe((res:any)=>{
+    this.collectionService.removeCollection(collection._key).subscribe((res:any)=>{
       this.myCollections = this.myCollections.filter((c:any)=>c._id!==collection._id)
       this.setDisabled(this.myCollections,this.adminCollections);
     })
@@ -55,6 +61,29 @@ export class CollectionComponent implements OnInit {
         "disabled" : (myCollections.filter(e => e.name === c.name).length > 0)
       }
     });
+  }
+
+  toggleForm(){
+    this.showForm = !this.showForm;
+  }
+
+  submitForm(){
+    let newCollection = {
+      name : this.collectionForm.value.name,
+      products: []
+    }
+    this.collectionService.addToCollection(newCollection).subscribe((res:any)=>{
+      this.myCollections.push({
+        ...newCollection,
+        key: res.data._key,
+        _id: res.data._id 
+      });
+      this.setDisabled(this.myCollections,this.adminCollections);
+      this.collectionForm.setValue({
+        name: null
+      })
+      this.showForm = !this.showForm;
+    })
   }
 
 }

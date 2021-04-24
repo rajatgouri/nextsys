@@ -25,6 +25,7 @@ export class CollectionService {
   removeCollection(key: any) {
     let params = new HttpParams();
     params = params.append('key', key);
+    console.log(key);
     return this.http.delete(environment.baseUrl + 'collection/remove-collection',{
       params : params
     });

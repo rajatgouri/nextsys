@@ -60,7 +60,6 @@ exports.getAdminCollection =  (req,res, next ) => {
 
 exports.removeCollection = (req,res,next) => {
     const key = req.query.key;
-    console.log(key);
     collection
     .remove(String(key))
     .then(()=>{

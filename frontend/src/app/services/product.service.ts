@@ -12,21 +12,22 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   addToProduct(product: any) {
-    return this.http.post(environment.baseUrl + 'collection/add-product', product);
+    return this.http.post(environment.baseUrl + 'product/add-product', product);
   }
 
   getUserProducts() {
-    return this.http.get(environment.baseUrl + 'collection/get-product');
+    return this.http.get(environment.baseUrl + 'product/get-products');
   }
 
   getAdminProducts() {
-    return this.http.get(environment.baseUrl + 'collection/get-admin-product');
+    return this.http.get(environment.baseUrl + 'product/get-products');
   }
 
-  removeProduct(key: any) {
+  removeProduct(collectionId: any, productId:any) {
     let params = new HttpParams();
-    params = params.append('key', key);
-    return this.http.delete(environment.baseUrl + 'collection/remove-product',{
+    params = params.append('collectionId', collectionId);
+    params = params.append('productId', productId);
+    return this.http.delete(environment.baseUrl + 'product/remove-product',{
       params : params
     });
   }

@@ -9,7 +9,7 @@ exports.createCollections = () => {
         _key: 'summer',
         name: 'Summer',
         userId: 'users/user1',
-        products : []
+        products : ['products/product1','products/product2','products/product3','products/product4','products/product5']
     };
 
 
@@ -17,7 +17,7 @@ exports.createCollections = () => {
         _key: 'christmas',
         name: 'Christmas',
         userId: 'users/user1',
-        products : []
+        products : ['products/product6','products/product7','products/product8','products/product9','products/product10','products/product11']
     };
 
 
@@ -45,7 +45,6 @@ exports.createProducts = () => {
         price: 100,
         discount: 5,
         currency: 'USD',
-        collection: 'collections/summer'
     },
     {
         _key: 'product2',
@@ -54,7 +53,6 @@ exports.createProducts = () => {
         price: 140,
         discount: 5,
         currency: 'USD',
-        collection: 'collections/summer'
     },
     {
         _key: 'product3',
@@ -63,7 +61,6 @@ exports.createProducts = () => {
         price: 350,
         discount: 4,
         currency: 'USD',
-        collection: 'collections/summer'
     },
     {
         _key: 'product4',
@@ -72,7 +69,6 @@ exports.createProducts = () => {
         price: 50,
         discount: 1,
         currency: 'USD',
-        collection: 'collections/summer'
     },
      {
         _key: 'product5',
@@ -81,7 +77,6 @@ exports.createProducts = () => {
         price: 200,
         discount: 5,
         currency: 'USD',
-        collection: 'collections/summer'
     },
      {
         _key: 'product6',
@@ -90,7 +85,6 @@ exports.createProducts = () => {
         price: 100,
         discount: 2,
         currency: 'USD',
-        collection: 'collections/christmas'
     },
      {
         _key: 'product7',
@@ -99,7 +93,6 @@ exports.createProducts = () => {
         price: 100,
         discount: 5,
         currency: 'USD',
-        collection: 'collections/christmas'
     },
     {
         _key: 'product8',
@@ -108,7 +101,6 @@ exports.createProducts = () => {
         price: 100,
         discount: 5,
         currency: 'USD',
-        collection: 'collections/christmas'
     }, {
         _key: 'product9',
         name: 'product9',
@@ -116,7 +108,6 @@ exports.createProducts = () => {
         price: 100,
         discount: 5,
         currency: 'USD',
-        collection: 'collections/christmas'
     },
     {
         _key: 'product10',
@@ -125,7 +116,6 @@ exports.createProducts = () => {
         price: 100,
         discount: 5,
         currency: 'USD',
-        collection: 'collections/christmas'
     },
     {
         _key: 'product11',
@@ -134,7 +124,6 @@ exports.createProducts = () => {
         price: 250,
         discount: 10,
         currency: 'USD',
-        collection: 'collections/christmas'
     }]
 
 

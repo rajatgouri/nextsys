@@ -21,10 +21,22 @@
     </div>
     <div class="col-6 mb-3">
       <div class="card outer-card">
-        <div class="card-header text-center header-collection">My Collections</div>
+        <div class="card-header text-center header-collection">My Collections <i class="fa fa-plus" aria-hidden="true" (click)="toggleForm()"></i></div>
         <div class="card-body">
           <div class="row">
             <div class="col-12">
+              <div *ngIf="showForm" class="card bg-light mb-3 collection-card">
+                <div class="card-body">
+                  <form [formGroup]="collectionForm">
+                    <div class="form-group">
+                      <label for="collectionName" class="collection text-center">Collection Name</label>
+                      <input type="text" formControlName="name" required class="form-control" id="collectionName" placeholder="Enter Collection Name" name="userName">
+                    </div>
+                    <button type="submit" class="btn btn-primary" (click)="submitForm()">Submit</button>
+                    <button type="submit" class="ml-2 btn btn-danger" (click)="toggleForm()">Close</button>
+                  </form>
+                </div>
+              </div>
               <div *ngFor="let collection of myCollections">
                 <div class="card bg-light mb-3 collection-card">
                   <div class="card-body">

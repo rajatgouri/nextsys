@@ -14,7 +14,7 @@ h1 {
 }
 
 .collection-card:hover {
-  transform: scale(1.1);
+  transform: scale(1.03);
 }
 
 .carousel-inner img {
@@ -31,6 +31,12 @@ h1 {
   font-family: 'Shadows Into Light', cursive;
   font-weight: bold;
   font-size: 2vw;
+}
+
+.dropdown {
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 1vw;
+  font-weight: bold;
 }
 
 .outer-card{

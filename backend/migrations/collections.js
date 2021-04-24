@@ -60,3 +60,21 @@ exports.collections = () => {
         })
 }
 
+exports.products = () => {
+    let products = db.collection('products', {
+        keyOptions: { 
+            type: "autoincrement", 
+            allowUserKeys: false 
+        } 
+    });
+    products
+        .create()
+        .then(() => {
+            console.log('products created.')
+            superCollections.createProducts() // create super admin products
+        })
+        .catch(err => {
+            console.log(err)
+        })
+}
+
