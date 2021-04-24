@@ -9,6 +9,11 @@ import { SharedModule } from '../shared/shared.module';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full'
+  },
+  {
     path: 'login',
     component: LoginComponent
   },

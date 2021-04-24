@@ -10,10 +10,13 @@ import { ToastService } from 'src/app/services/toast.service';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
+  available : boolean = false;
+  showAvailable : boolean = false;
 
   signupForm:FormGroup = new FormGroup({
     firstName:new FormControl(null,Validators.required),
     lastName:new FormControl(null,Validators.required),
+    userName:new FormControl(null,Validators.required),
     email:new FormControl(null,[Validators.email,Validators.required]),
     password:new FormControl(null,[Validators.required,Validators.maxLength(10), Validators.minLength(8),this.createPasswordStrengthValidator()]),
     cpassword:new FormControl(null,[Validators.required,Validators.maxLength(10), Validators.minLength(8),this.createPasswordStrengthValidator(),this.createPasswordMatchValidator()])
@@ -31,6 +34,16 @@ export class SignupComponent implements OnInit {
     }
   }
 
+  checkUsername(event:Event) {
+    const body = {
+      userName : (event.target as HTMLInputElement).value
+    }
+    this.authService.checkUsername(body).subscribe((res:any)=>{
+        this.available = res === true? true : false;
+        this.showAvailable = body.userName.length? true : false;
+    });
+  }
+
   signup(){
     if(!this.signupForm.valid || (this.signupForm.controls.password.value != this.signupForm.controls.cpassword.value)) {
       console.log('invalid Form'); 
@@ -43,7 +56,7 @@ export class SignupComponent implements OnInit {
       this.toastService.toast('signup successfully')
       this.router.navigate(['/auth/login'])
     }, error => {
-      console.log('erroroor')
+      console.log(error)
       console.log(error.error.msg)
       this.toastService.toast(error.error.msg)
     })

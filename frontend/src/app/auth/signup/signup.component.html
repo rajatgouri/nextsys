@@ -40,6 +40,26 @@
           <div class="form__row">
             <div class="input">
               <div class="input__container">
+                <input formControlName="userName" (keyup)="checkUsername($event)" class="input__field" id="userName" placeholder="Email" required type="text" /><label class="input__label" for="userName">User Name</label>
+                <div *ngIf="showAvailable">
+                  <div class="small text-danger" *ngIf="!available">
+                    Username is not available !
+                  </div>
+                  <div class="small text-success" *ngIf="available">
+                    Username is available !
+                  </div>
+                </div>
+                <div class="error-msg" *ngIf="signupForm.controls.userName.errors && signupForm.controls.userName.touched">
+                  <div class="small text-danger" *ngIf="signupForm.controls.userName.errors.required">
+                    This Field is required
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form__row">
+            <div class="input">
+              <div class="input__container">
                 <input formControlName="email" class="input__field" id="email" placeholder="Email" required="" type="text" /><label class="input__label" for="email">Email</label>
                 <div class="error-msg" *ngIf="signupForm.controls.email.errors && signupForm.controls.email.touched">
                   <div class="small text-danger" *ngIf="signupForm.controls.email.errors.required">
@@ -109,7 +129,7 @@
             </div>
           </div>
           <div class="form__row sign-up__sign">
-            Already have an account? &nbsp;<a class="link" href="#">Sign in.</a>
+            Already have an account? &nbsp;<a class="link" routerLink="/auth/login">Sign in.</a>
           </div>
           <div class="form__row sign-up__terms">
             <a class="link" href="#">Term of use. Privacy policy</a>

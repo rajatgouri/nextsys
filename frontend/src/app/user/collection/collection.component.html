@@ -1,34 +1,42 @@
-<div class="row">
-  <div class="col-12 text-right">
-    <button class="btn btn-primart">Add Collection</button>
-  </div>
-  <div class="col-12">
-    <table>
-        <thead>
-          <th>Id</th>
-          <th>Name</th>
-          <th>Total Products</th>
-          <th>
-            Action  
-          </th>
-        </thead>
-        <tbody>
-          <td>
-            ghhgc
-          </td>
-          <td>
-            Summer
-          </td>
-          <td>
-            10
-          </td>
-          <td>
-            <i class="fas fa-edit text-success "></i>
-            <i class="fas fa-trash text-danger ml-2 "></i>
-
-          </td>
-
-        </tbody>
-    </table>
+<div class="row mt-3">
+  <div class="col-12 d-flex justify-content-between">
+    <div class="col-6 mb-3">
+      <div class="card outer-card">
+        <div class="card-header text-center header-collection">All Collections</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12">
+              <div *ngFor="let collection of adminCollections">
+                <div class="card bg-light mb-3 collection-card">
+                  <div class="card-body">
+                    <h5 class="card-title collection text-center">{{collection.name}}</h5>
+                    <button class="btn btn-primary add-button mt-2" (click)="addCollection(collection)" [attr.disabled]="collection.disabled == true? true: null"><i class="fas fa-plus"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>      
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 mb-3">
+      <div class="card outer-card">
+        <div class="card-header text-center header-collection">My Collections</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12">
+              <div *ngFor="let collection of myCollections">
+                <div class="card bg-light mb-3 collection-card">
+                  <div class="card-body">
+                    <h5 class="card-title collection text-center">{{collection.name}}</h5>
+                    <button class="btn btn-danger add-button mt-2" (click)="removeCollection(collection)"><i class="fas fa-trash"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>      
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

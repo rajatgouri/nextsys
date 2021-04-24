@@ -13,7 +13,7 @@ export class AuthInterceptorService implements HttpInterceptor {
     let accessToken = localStorage.getItem('accessToken');
       if(accessToken) {
         let modifiedReq = req.clone({
-          params: new HttpParams().set('Authorization', 'Bearer ' + accessToken)
+          headers: req.headers.set('Authorization', `Bearer ${accessToken}`),
         })
 
 

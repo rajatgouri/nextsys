@@ -95,11 +95,8 @@ export class ProfileComponent implements OnInit {
   
   
   ngOnInit(): void {
-    this.collectionService.getCollection().subscribe((response: any) => {
+    this.collectionService.getAdminCollection().subscribe((response: any) => {
       console.log(response);
-      this.summerSlides = response.data.filter((d: any) => d.product.collection === "collections/summer")
-      this.christmasSlides = response.data.filter((d: any) => d.product.collection === "collections/christmas")
-      
     })
 
 }
@@ -108,21 +105,5 @@ export class ProfileComponent implements OnInit {
   addToCollection() {
     this.toast('Added To The Collection')
   }
-
-
-//   toDataURL(url: any, callback: any) {
-    
-//     var xhr = new XMLHttpRequest();
-//     xhr.onload = function () {
-//         var reader = new FileReader();
-//         reader.onloadend = function () {
-//             callback(reader.result);
-//         }
-//         reader.readAsDataURL(xhr.response);
-//     };
-//     xhr.open('GET', url);
-//     xhr.responseType = 'blob';
-//     xhr.send();
-// }
 
 }
