@@ -1,4 +1,5 @@
-const config = require('../config');
+const config = require('../config/development');
+const jwt = require("jsonwebtoken");
 
 const authenticateJWT = (req, res, next) => {
     const authHeader = req.headers.authorization;
@@ -10,9 +11,6 @@ const authenticateJWT = (req, res, next) => {
             if (err) {
                 return res.status(403).send({msg: 'forbidden'});
             }
-
-            console.log(user)
-            req.user = user;
             next();
         });
     } else {
@@ -20,4 +18,13 @@ const authenticateJWT = (req, res, next) => {
     }
 };
 
-module.exports = authenticateJWT
+const decodeJWT = (req) => {
+    const authHeader = req.headers.authorization;
+
+    const token = authHeader.split(' ')[1];
+
+    var decodedValue = Buffer.from(token, 'base64').toString('ascii');
+    decodedValue = decodedValue.slice(decodedValue.search("id")+5,decodedValue.search("iat")-3);
+    return decodedValue;
+}
+module.exports = { authenticateJWT,decodeJWT }

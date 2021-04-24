@@ -1,6 +1,7 @@
 const db = require('./database');
 const roles = require('./roles')
 const user = require('./user');
+const superCollections = require('./product-and-collections');
 	
 exports.user = () => {
     let collection = db.collection('user', {
@@ -52,6 +53,7 @@ exports.collections = () => {
         .create()
         .then(() => {
             console.log('collections created.')
+            superCollections.createCollections() // create super admin collections
         })
         .catch(err => {
             console.log(err)

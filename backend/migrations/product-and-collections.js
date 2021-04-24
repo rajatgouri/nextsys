@@ -7,13 +7,17 @@ const products = db.collection('products');
 exports.createCollections = () => {
     let collection1 = {
         _key: 'summer',
-        name: 'Summer'
+        name: 'Summer',
+        userId: 'users/user1',
+        products : []
     };
 
 
     let collection2 = {
         _key: 'christmas',
-        name: 'Christmas'
+        name: 'Christmas',
+        userId: 'users/user1',
+        products : []
     };
 
 

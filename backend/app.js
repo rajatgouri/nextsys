@@ -18,7 +18,6 @@ app.use(cors({
 const db = require('./database/database')
 // console.log(db)
 
-
 let config = require('./config/'+ process.env.NODE_ENV );
 const PORT = process.env.PORT || 9641;
 
@@ -29,7 +28,7 @@ app.use('/', route.init());
 
 
 app.listen(PORT, () => {
-    console.log('Connecting to Server at port 9641 ... ')   
+    console.log('Connected to Server at port 9641 ... ')   
 })
 
 

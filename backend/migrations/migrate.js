@@ -6,7 +6,7 @@ db.useBasicAuth(config.database.user, config.database.password);
 const collections = require('./collections');
 
 
-// create database //
+// create database /
 
 db.createDatabase('nextSys').then(() => {
         console.log('Database created');
