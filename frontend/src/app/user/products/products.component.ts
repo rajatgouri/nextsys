@@ -35,6 +35,7 @@ export class ProductsComponent implements OnInit {
     this.spinnerService.show(); 
     this.collectionService.getUserCollection().subscribe((res:any)=>{
       this.myCollections = res.data;
+      console.log(this.myCollections);
       this.productService.getAdminProducts().subscribe((res:any)=>{
         this.allProducts = res.data;
         this.myCollections.forEach((c:any)=>{
@@ -58,23 +59,23 @@ export class ProductsComponent implements OnInit {
     })
   }
 
-  sortProducts(products:[],search:string) {
-
-  }
-
   addProduct(productId:any) {
-    const body = {
-      productId: productId,
-      collectionId: this.collectionForm.value.id
-    }
-    this.productService.addToProduct(body).subscribe((res:any)=>{
+    if (this.myCollections.filter((c:any)=>c._id===this.collectionForm.value.id)[0]?.products?.includes(productId)) {
       this.fetchProducts();
-    })
+      return ;
+    } else {
+      const body = {
+        productId: productId,
+        collectionId: this.collectionForm.value.id
+      }
+      this.productService.addToProduct(body).subscribe((res:any)=>{
+        this.fetchProducts();
+      })
+    }
   }
 
   removeProduct(collectionId:any,productId:any) {
     this.productService.removeProduct(collectionId,productId).subscribe((res:any)=>{
-      console.log(res);
       this.fetchProducts();
     })
   }

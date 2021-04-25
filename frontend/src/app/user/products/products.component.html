@@ -60,7 +60,7 @@
                     <td>{{product.discount}} %</td>
                     <td class="text-success">
                       <button class="btn btn-primary add-button mt-2" data-toggle="collapse" [attr.data-target]="'#demo'+ i"
-                      data-parent="#myTable"><i class="fas fa-plus"></i></button>
+                      data-parent="#myTable" [attr.disabled]="myCollections.length > 0 ? null: true"><i class="fas fa-plus"></i></button>
                     </td>
                   </tr>
                   <tr [attr.id]="'demo'+ i" class="collapse">
@@ -75,7 +75,7 @@
                               </select>
                             </div>
                             <button type="submit" class="btn btn-primary" (click)="addProduct(product._id)">Submit</button>
-                            <button type="submit" class="ml-2 btn btn-danger" (click)="toggleForm(i)">Close</button>
+                            <button type="submit" class="ml-2 btn btn-danger" data-toggle="collapse" [attr.data-target]="'#demo'+ i">Close</button>
                           </form>
                         </div>
                       </div>
