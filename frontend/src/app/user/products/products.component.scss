@@ -8,7 +8,16 @@ h1 {
   font-family: cassandra;
 }
 
+@media(max-width: 450px){
+  .mobile-hidden{
+    display: none;
+  }
+}
 
+.modal{
+  padding-left: 20px;
+  padding-right: 20px !important;
+}
 .collection-card {
   transition: transform .2s;
 }
@@ -30,12 +39,12 @@ h1 {
 .collection{
   font-family: 'Shadows Into Light', cursive;
   font-weight: bold;
-  font-size: 2vw;
+  font-size: 2rem;
 }
 
 .dropdown {
   font-family: 'Shadows Into Light', cursive;
-  font-size: 1vw;
+  font-size: 1rem;
   font-weight: bold;
 }
 
@@ -45,6 +54,6 @@ h1 {
 
 .header-collection {
   font-family: 'Fredoka One', cursive;
-  font-size: 2vw;
+  font-size: 2rem;
 }
 

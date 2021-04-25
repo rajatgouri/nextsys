@@ -60,7 +60,9 @@ export class ProductsComponent implements OnInit {
   }
 
   addProduct(productId:any) {
-    if (this.myCollections.filter((c:any)=>c._id===this.collectionForm.value.id)[0]?.products?.includes(productId)) {
+    const collection = this.myCollections.filter((c:any)=>c._id===this.collectionForm.value.id)[0];
+    const shouldAdd = collection? collection.products.includes(productId) : false;
+    if (shouldAdd) {
       this.fetchProducts();
       return ;
     } else {
