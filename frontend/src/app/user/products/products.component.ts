@@ -35,11 +35,10 @@ export class ProductsComponent implements OnInit {
     this.spinnerService.show(); 
     this.collectionService.getUserCollection(null).subscribe((res:any)=>{
       this.myCollections = res.data;
-      console.log(this.myCollections);
       this.productService.getAdminProducts().subscribe((res:any)=>{
         this.allProducts = res.data;
+        let myProducts:any = []
         this.myCollections.forEach((c:any)=>{
-          let myProducts:any = []
           c.products.forEach((p:any)=>{
             myProducts.push({
               ...this.allProducts.filter((ap:any)=>ap._id === p)[0],
@@ -47,8 +46,8 @@ export class ProductsComponent implements OnInit {
               collectionName: c.name
             });
           })
-          this.myProducts = myProducts;
         })
+        this.myProducts = myProducts;
         if(this.myProducts,this.allProducts) {
           this.setDisabledAndShowForm(this.myProducts, this.allProducts);
           setTimeout(() => {
@@ -61,7 +60,8 @@ export class ProductsComponent implements OnInit {
 
   addProduct(productId:any) {
     const collection = this.myCollections.filter((c:any)=>c._id===this.collectionForm.value.id)[0];
-    const shouldAdd = collection? collection.products.includes(productId) : false;
+    const shouldAdd = collection? collection.products.filter((p:any)=>p===productId)[0] : false;
+    console.log(shouldAdd);
     if (shouldAdd) {
       this.fetchProducts();
       return ;
