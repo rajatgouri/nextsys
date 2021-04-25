@@ -12,6 +12,8 @@ import { ProductsComponent } from './products/products.component';
 import {AuthGuardService} from '../services/auth-guard.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';  
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { ViewProductComponent } from './products/view-product/view-product.component';
+import { SearchFilterPipe } from '../pipes/search.pipe';
 
 
 const routes: Routes = [
@@ -40,6 +42,8 @@ const routes: Routes = [
     ImageModalComponent,
     SidebarComponent,
     ProductsComponent,
+    ViewProductComponent,
+    SearchFilterPipe
   ],
   imports: [
     CommonModule,

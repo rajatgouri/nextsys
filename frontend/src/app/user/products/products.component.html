@@ -1,23 +1,71 @@
 <div class="row mt-3">
-    <div class="col-12 d-flex justify-content-between">
-      <div class="col-6 mb-3">
-        <div class="card outer-card">
-          <div class="card-header text-center header-collection">All Products</div>
-          <div class="card-body">
-            <div class="row">
-              <div class="col-12">
-                <div *ngFor="let product of allProducts;let i = index">
-                  <div class="card bg-light mb-3 mt-3 collection-card">
-                    <img class="card-img-top" [src]="product.img" alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title collection">{{product.name}}</h5>
-                      <p class="card-text text-success font-weight-bold">
-                        {{product.currency}} {{product.price}}
-                        <span class="text-danger small ml-2"
-                        >( {{ product.discount }}% off )</span>
-                      </p>
-                      <button class="btn btn-primary add-button mt-2" (click)="toggleForm(i)" [attr.disabled]="product.disabled == true? true: null"><i class="fas fa-plus"></i></button>
-                      <div *ngIf="product.showForm" class="card bg-light mb-3 mt-1">
+  <div class="col-12 d-flex justify-content-between">
+    <div class="col-6 mb-3">
+      <div class="card outer-card">
+        <div class="card-header text-center header-collection">Global Products</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12">
+              <div class="search-container">
+                <div class="input-group mb-3">
+                  <input type="text" class="form-control" placeholder="Search collections" [(ngModel)]="searchAll">
+                  <div class="input-group-append">
+                      <button class="btn btn-primary"><i class="fa fa-search"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <table class="table table-responsive table-condensed" id="myTable">
+                <thead>
+                  <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Discount</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let product of allProducts | searchFilter: searchAll;let i = index" class="panel">
+                  <tr  >
+                    <td>
+                      <img class="rounded-circle shadow" height="40" width="45" [src]="product.img">
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        {{product.name}}
+                      </button>
+                      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <app-view-product [product]="product"></app-view-product>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    
+                    <!-- Modal -->
+                  
+                    <td>{{product.price}}</td>
+                    <td>{{product.discount}} %</td>
+                    <td class="text-success">
+                      <button class="btn btn-primary add-button mt-2" data-toggle="collapse" [attr.data-target]="'#demo'+ i"
+                      data-parent="#myTable"><i class="fas fa-plus"></i></button>
+                    </td>
+                  </tr>
+                  <tr [attr.id]="'demo'+ i" class="collapse">
+                    <td colspan="6" class="hiddenRow">
+                      <div>
                         <div class="card-body">
                           <form [formGroup]="collectionForm">
                             <div class="form-group dropdown">
@@ -31,41 +79,88 @@
                           </form>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                </div>
-              </div>      
+                    </td>
+                  </tr>
+
+                </tbody>
+              </table>
+              <!-- </div> -->
             </div>
           </div>
         </div>
       </div>
-      <div class="col-6 mb-3">
-        <div class="card outer-card">
-          <div class="card-header text-center header-collection">My Products</div>
-          <div class="card-body">
-            <div class="row">
-              <div class="col-12">
-                <div *ngFor="let product of myProducts">
-                  <div class="card bg-light mb-3 mt-3 collection-card">
-                    <img class="card-img-top" [src]="product.img" alt="Card image cap">
-                    <div class="card-body">
-                      <h5 class="card-title collection">{{product.name}}</h5>
-                      <p class="card-text text-success font-weight-bold">
-                        {{product.currency}} {{product.price}}
-                        <span class="text-danger small ml-2"
-                        >( {{ product.discount }}% off )</span>
-                      </p>
-                      <button class="btn btn-danger add-button mt-2" (click)="removeProduct(product.collectionId,product._id)"><i class="fas fa-trash"></i></button>
-                    </div>
+    </div>
+    <div class="col-6 mb-3">
+      <div class="card outer-card">
+        <div class="card-header text-center header-collection">My Products</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12">
+              <div class="search-container">
+                <div class="input-group mb-3">
+                  <input type="text" class="form-control" placeholder="Search collections" [(ngModel)]="searchMy">
+                  <div class="input-group-append">
+                      <button class="btn btn-success"><i class="fa fa-search"></i></button>
                   </div>
                 </div>
-              </div>      
+              </div>
+            </div>
+            <div class="col-12">
+              <table class="table table-responsive">
+                <thead>
+                  <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Discount</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let product of myProducts | searchFilter: searchMy">
+                  <tr  >
+                    <td>
+                      <img class="rounded-circle shadow" height="40" width="45" [src]="product.img">
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        {{product.name}}
+                      </button>
+                      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <app-view-product [product]="product"></app-view-product>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>{{product.price}}</td>
+                    <td>{{product.discount}} %</td>
+                    <td >
+                      <button class="btn btn-danger add-button mt-2"
+                      (click)="removeProduct(product.collectionId,product._id)"><i class="fas fa-trash"></i></button>
+                    </td>
+                  </tr>
+                  
+
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">  
-    <p style="color: white">Please Wait. </p>  
-  </ngx-spinner> 
+</div>
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+  <p style="color: white">Please Wait. </p>
+</ngx-spinner>

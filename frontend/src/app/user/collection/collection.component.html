@@ -2,11 +2,21 @@
   <div class="col-12 d-flex justify-content-between">
     <div class="col-6 mb-3">
       <div class="card outer-card">
-        <div class="card-header text-center header-collection">All Collections</div>
+        <div class="card-header text-center header-collection">Global Collections</div>
         <div class="card-body">
           <div class="row">
             <div class="col-12">
-              <div *ngFor="let collection of adminCollections">
+              <div class="search-container">
+                <div class="input-group mb-3">
+                  <input type="text" class="form-control" placeholder="Search collections" [(ngModel)]="searchAll">
+                  <div class="input-group-append">
+                      <button class="btn btn-primary"><i class="fa fa-search"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div *ngFor="let collection of adminCollections | searchFilter: searchAll">
                 <div class="card bg-light mb-3 collection-card">
                   <div class="card-body">
                     <h5 class="card-title collection text-center">{{collection.name}}</h5>
@@ -21,10 +31,20 @@
     </div>
     <div class="col-6 mb-3">
       <div class="card outer-card">
-        <div class="card-header text-center header-collection">My Collections <i class="fa fa-plus" aria-hidden="true" (click)="toggleForm()"></i></div>
+        <div class="card-header text-center header-collection">My Collections <i class="fa fa-plus ml-2 rounded-circle bg-primary" aria-hidden="true" (click)="toggleForm()"></i></div>
         <div class="card-body">
           <div class="row">
             <div class="col-12">
+
+              <div class="search-container">
+                <div class="input-group mb-3">
+                  <input type="text" class="form-control" placeholder="Search collections" [(ngModel)]="searchMy">
+                  <div class="input-group-append">
+                      <button class="btn btn-success"><i class="fa fa-search"></i></button>
+                  </div>
+                </div>
+              </div>
+
               <div *ngIf="showForm" class="card bg-light mb-3 collection-card">
                 <div class="card-body">
                   <form [formGroup]="collectionForm">
@@ -32,12 +52,12 @@
                       <label for="collectionName" class="collection text-center">Collection Name</label>
                       <input type="text" formControlName="name" required class="form-control" id="collectionName" placeholder="Enter Collection Name" name="userName">
                     </div>
-                    <button type="submit" class="btn btn-primary" (click)="submitForm()">Submit</button>
+                    <button type="submit" class="btn btn-success" (click)="submitForm()">Add </button>
                     <button type="submit" class="ml-2 btn btn-danger" (click)="toggleForm()">Close</button>
                   </form>
                 </div>
               </div>
-              <div *ngFor="let collection of myCollections">
+              <div *ngFor="let collection of myCollections | searchFilter: searchMy">
                 <div class="card bg-light mb-3 collection-card">
                   <div class="card-body">
                     <h5 class="card-title collection text-center">{{collection.name}}</h5>
@@ -52,3 +72,7 @@
     </div>
   </div>
 </div>
+
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+  <p style="color: white">Please Wait. </p>
+</ngx-spinner>

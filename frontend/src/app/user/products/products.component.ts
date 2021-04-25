@@ -12,6 +12,8 @@ import { NgxSpinnerService } from "ngx-spinner";
 export class ProductsComponent implements OnInit {
 
   allProducts : any = [];
+  searchAll = '';
+  searchMy = '';
   myProducts: any = [];
   myCollections: any = [];
   
@@ -26,19 +28,25 @@ export class ProductsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.fetchProducts();
+  }
+
+  fetchProducts() {
     this.spinnerService.show(); 
     this.collectionService.getUserCollection().subscribe((res:any)=>{
       this.myCollections = res.data;
       this.productService.getAdminProducts().subscribe((res:any)=>{
         this.allProducts = res.data;
         this.myCollections.forEach((c:any)=>{
+          let myProducts:any = []
           c.products.forEach((p:any)=>{
-            this.myProducts.push({
+            myProducts.push({
               ...this.allProducts.filter((ap:any)=>ap._id === p)[0],
               collectionId: c._id,
               collectionName: c.name
-            })
+            });
           })
+          this.myProducts = myProducts;
         })
         if(this.myProducts,this.allProducts) {
           this.setDisabledAndShowForm(this.myProducts, this.allProducts);
@@ -50,19 +58,24 @@ export class ProductsComponent implements OnInit {
     })
   }
 
+  sortProducts(products:[],search:string) {
+
+  }
+
   addProduct(productId:any) {
     const body = {
       productId: productId,
       collectionId: this.collectionForm.value.id
     }
     this.productService.addToProduct(body).subscribe((res:any)=>{
-      window.location.reload();
+      this.fetchProducts();
     })
   }
 
   removeProduct(collectionId:any,productId:any) {
     this.productService.removeProduct(collectionId,productId).subscribe((res:any)=>{
-      window.location.reload();
+      console.log(res);
+      this.fetchProducts();
     })
   }
 
