@@ -14,8 +14,14 @@ export class CollectionService {
     return this.http.post(environment.baseUrl + 'collection/add-collection', collection);
   }
 
-  getUserCollection() {
-    return this.http.get(environment.baseUrl + 'collection/get-collection');
+  getUserCollection(username:any) {
+    let params = new HttpParams();
+    if (username) {
+      params = params.append('username', username);
+    }
+    return this.http.get(environment.baseUrl + 'collection/get-collection',{
+      params: params
+    });
   }
 
   getAdminCollection() {

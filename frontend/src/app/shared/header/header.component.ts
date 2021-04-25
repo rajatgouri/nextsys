@@ -8,19 +8,12 @@ import { AuthService } from '../../services/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  homeRoute : any ;
-
+  user: any;
   constructor(
     public auth : AuthService
   ) { }
 
   ngOnInit(): void {
-    const user:any = this.auth.getUser();
-    this.homeRoute = [
-      '/home',
-      {
-        username: user.username
-      }
-    ];
+    this.user = this.auth.getUser();
   }
 }

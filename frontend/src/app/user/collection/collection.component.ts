@@ -26,7 +26,7 @@ export class CollectionComponent implements OnInit {
 
   ngOnInit(): void {
     this.spinnerService.show();
-    this.collectionService.getUserCollection().subscribe((res:any)=>{
+    this.collectionService.getUserCollection(null).subscribe((res:any)=>{
       this.myCollections = res.data;
       console.log(this.myCollections);
       this.collectionService.getAdminCollection().subscribe((res:any)=>{

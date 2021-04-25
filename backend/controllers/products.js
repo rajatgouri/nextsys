@@ -80,16 +80,14 @@ exports.removeProduct = async (req,res,next) => {
         };
         updatedCollection.products=updatedCollection.products.filter(p=>p!==productId);
         Collections.update(updatedCollection._key, updatedCollection)
-        .then((data2,error)=>{
-            if (error) {
-                res.status(500 ).send({
-                    msg: "Failed to remove"
-                });
-            }
-            res.status(200).send({
-                msg: "Product removed succesfully",
-                data: data2,
-            }); 
+        .then(()=>{
+            return res.status(200).send({
+                message: "Collection Removed"
+            })
+        })
+        .catch(function(error) {
+          console.error('Error removing document', error);
+          return res.status(500)
         });
     }) 
 }

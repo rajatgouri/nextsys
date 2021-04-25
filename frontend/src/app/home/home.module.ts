@@ -7,7 +7,7 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
 const routes: Routes = [{
-  path: '',
+  path: ':username',
   component: HomeComponent
 }];
 

@@ -26,20 +26,57 @@ exports.addCollection = (req,res,next) => {
 
 
 exports.getUserCollection =  (req,res, next ) => {
-    const id = checkAuth.decodeJWT(req);
-    db.query("FOR c IN collections FILTER c.userId=='" + id + "'RETURN c")
-    .then(cursor => cursor.all()).
-    then((data,error)=>{
-        if (error) {
-            res.status(500 ).send({
-                msg: "Failed to fetch"
-            });
-        }
-        res.status(200).send({
-            msg: "User Collections on the way",
-            data: data,
+    const username = req.query.username;
+    let id;
+    if (username) {
+        db.query("FOR u IN user FILTER u.userName=='" + username + "'RETURN u")
+        .then(cursor => cursor.all()).
+        then((data,error)=>{
+            if (error) {
+                res.status(500 ).send({
+                    msg: "Failed to fetch user"
+                });
+            }
+            console.log(data);
+            if (data.length==0) {
+                res.status(200 ).send({
+                    msg: "No user exists"
+                }); 
+                return ;
+            }
+            id = data[0]._id
+            console.log("with username");
+            db.query("FOR c IN collections FILTER c.userId=='" + id + "'RETURN c")
+            .then(cursor => cursor.all()).
+            then((data,error)=>{
+                if (error) {
+                    res.status(500 ).send({
+                        msg: "Failed to fetch"
+                    });
+                }
+                res.status(200).send({
+                    msg: "User Collections on the way",
+                    data: data,
+                }); 
+            }); 
+        });        
+    } else {
+        id = checkAuth.decodeJWT(req);
+        console.log("without")
+        db.query("FOR c IN collections FILTER c.userId=='" + id + "'RETURN c")
+        .then(cursor => cursor.all()).
+        then((data,error)=>{
+            if (error) {
+                res.status(500 ).send({
+                    msg: "Failed to fetch"
+                });
+            }
+            res.status(200).send({
+                msg: "User Collections on the way",
+                data: data,
+            }); 
         }); 
-    });       
+    } 
 }
 
 exports.getAdminCollection =  (req,res, next ) => {

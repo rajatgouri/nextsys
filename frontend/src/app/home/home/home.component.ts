@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CollectionService } from 'src/app/services/collection.service';
 import { ProductService } from 'src/app/services/product.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute , Router} from '@angular/router';
 import Swal from 'sweetalert2';
 import { NgxSpinnerService } from "ngx-spinner"; 
 
@@ -56,18 +56,15 @@ export class HomeComponent implements OnInit {
     private productService: ProductService, 
     private collectionService: CollectionService,
     private spinnerService: NgxSpinnerService,
-    private route: ActivatedRoute 
+    private route: ActivatedRoute ,
+    private router: Router
     ) { }
 
 
   ngOnInit(): void {
     this.spinnerService.show(); 
-    // @ts-ignore
-    this.route.queryParams.subscribe(params => {
-      this.username = params['username'];
-      console.log(params)
-    });
-    this.collectionService.getUserCollection().subscribe((res:any)=>{
+    this.username = (this.router.url.slice(6));
+    this.collectionService.getUserCollection(this.username).subscribe((res:any)=>{
       this.collections = res.data;
       this.productService.getAdminProducts().subscribe((res:any)=>{
         this.allProducts = res.data;
@@ -76,12 +73,12 @@ export class HomeComponent implements OnInit {
             const updatedProduct = {
               ...this.allProducts.filter((ap:any)=>ap._id === id)[0]
             }
+            setTimeout(() => {
+              this.spinnerService.hide();
+            }, 500);
             return updatedProduct;
           })
         })
-        setTimeout(() => {
-          this.spinnerService.hide();
-        }, 500);
       });
     }) 
   }

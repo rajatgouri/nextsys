@@ -33,7 +33,7 @@ export class ProductsComponent implements OnInit {
 
   fetchProducts() {
     this.spinnerService.show(); 
-    this.collectionService.getUserCollection().subscribe((res:any)=>{
+    this.collectionService.getUserCollection(null).subscribe((res:any)=>{
       this.myCollections = res.data;
       console.log(this.myCollections);
       this.productService.getAdminProducts().subscribe((res:any)=>{
