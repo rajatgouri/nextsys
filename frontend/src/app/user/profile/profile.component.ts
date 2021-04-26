@@ -19,6 +19,7 @@ export class ProfileComponent implements OnInit {
   christmasSlides: any = [];
   profileUrl : any;
   background: any;
+  reloading: boolean = true;
 
   
   public slideConfig: any = {
@@ -77,11 +78,16 @@ export class ProfileComponent implements OnInit {
     const modalRef = this.modalService.open(ImageModalComponent, ngbModalOptions);
     modalRef.componentInstance.title = title;
     modalRef.componentInstance.type = type;
+    modalRef.result.then(()=>{
+      // @ts-ignore
+      document.getElementById("back-src").src += `?v=${new Date().getTime()}`;
+      // @ts-ignore
+      document.getElementById("profile-src").src += `?v=${new Date().getTime()}`;
+    })
   }
   
   
   slickInit(e: any) {
-    console.log('slick initialized');
   }
 
   
@@ -97,10 +103,16 @@ export class ProfileComponent implements OnInit {
   
   
   ngOnInit(): void {
+    this.fetchProfile();
+  }
+
+  fetchProfile(){
+    this.background = null;
+    this.profileUrl = null;
     const user:any = this.authService.getUser()
     this.userService.getImages(user.username).subscribe((res:any)=>{
-      this.background = environment.url + res.data.background;
-      this.profileUrl = environment.url + res.data.picture;
+      this.background = environment.url + res.data.background ;
+      this.profileUrl = environment.url + res.data.picture ;
     })
   }
 

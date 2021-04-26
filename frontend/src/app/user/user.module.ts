@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {  NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProfileComponent } from './profile/profile.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -14,7 +14,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ViewProductComponent } from './products/view-product/view-product.component';
 import { SearchFilterPipe } from '../pipes/search.pipe';
-
 
 const routes: Routes = [
   {
@@ -54,7 +53,7 @@ const routes: Routes = [
     ImageCropperModule,
     ReactiveFormsModule,
     FormsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
   ]
 })
 export class UserModule { }

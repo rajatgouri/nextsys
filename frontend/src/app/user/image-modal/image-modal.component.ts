@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit, Output ,EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
@@ -43,13 +43,11 @@ export class ImageModalComponent implements OnInit {
     }
     if (this.type === 'profile') {
       this.user.profileUpload(body).subscribe(res=>{
-        this.activeModal.close();
-        window.location.reload();
+        this.activeModal.close();;
       })
     } else {
       this.user.backgroundUpload(body).subscribe(res=>{
         this.activeModal.close();
-        window.location.reload();
       })
     }
   }
