@@ -13,7 +13,9 @@ export class ImageModalComponent implements OnInit {
 
   @Input() title: any;
   @Input() type: any;
-
+  @Input() imageUrl: any;
+  
+  showImage :boolean = true;
   imageChangedEvent: any = '';
   croppedImage: any = '';
   
@@ -31,6 +33,7 @@ export class ImageModalComponent implements OnInit {
 
   fileChangeEvent(event: any): void {
     this.imageChangedEvent = event;
+    console.log(this.imageChangedEvent);
   }
   
   imageCropped(event: ImageCroppedEvent) {

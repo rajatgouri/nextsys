@@ -78,6 +78,7 @@ export class ProfileComponent implements OnInit {
     const modalRef = this.modalService.open(ImageModalComponent, ngbModalOptions);
     modalRef.componentInstance.title = title;
     modalRef.componentInstance.type = type;
+    modalRef.componentInstance.imageUrl = type==='profile' ? this.profileUrl : this.background;
     modalRef.result.then(()=>{
       // @ts-ignore
       document.getElementById("back-src").src += `?v=${new Date().getTime()}`;
