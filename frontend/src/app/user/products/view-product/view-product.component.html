@@ -2,6 +2,7 @@
     <img class="card-img-top" [src]="product.img" alt="Card image cap">
     <div class="card-body">
         <h5 class="card-title collection">{{product.name}}</h5>
+        <h5 *ngIf="product.collectionName" class="card-title collection">Collection : {{"product.collectionName"}}</h5>
         <p class="card-text text-success font-weight-bold">
         {{product.currency}} {{product.price}}
         <span class="text-danger small ml-2"
