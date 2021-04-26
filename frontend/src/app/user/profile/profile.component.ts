@@ -5,6 +5,8 @@ import { ImageModalComponent } from '../image-modal/image-modal.component';
 import { CollectionService } from 'src/app/services/collection.service';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { UserService } from 'src/app/services/user.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-profile',
@@ -15,6 +17,8 @@ export class ProfileComponent implements OnInit {
 
   summerSlides: any = [];
   christmasSlides: any = [];
+  profileUrl : any;
+  background: any;
 
   
   public slideConfig: any = {
@@ -55,7 +59,7 @@ export class ProfileComponent implements OnInit {
     private modalService: NgbModal,
     private collectionService: CollectionService,
     private authService:AuthService,
-    private router: Router,
+    private userService:UserService,
     ) { }
 
   
@@ -63,7 +67,7 @@ export class ProfileComponent implements OnInit {
 
   }
 
-  openModal(path: string, title: string) {
+  openModal(path: string, title: string , type: string) {
 
     const ngbModalOptions: NgbModalOptions = {
       backdrop: 'static',
@@ -72,9 +76,7 @@ export class ProfileComponent implements OnInit {
 
     const modalRef = this.modalService.open(ImageModalComponent, ngbModalOptions);
     modalRef.componentInstance.title = title;
-    modalRef.componentInstance.imageBase64String = ''
-
-
+    modalRef.componentInstance.type = type;
   }
   
   
@@ -95,11 +97,12 @@ export class ProfileComponent implements OnInit {
   
   
   ngOnInit(): void {
-    this.collectionService.getAdminCollection().subscribe((response: any) => {
-      console.log(response);
+    const user:any = this.authService.getUser()
+    this.userService.getImages(user.username).subscribe((res:any)=>{
+      this.background = environment.url + res.data.background;
+      this.profileUrl = environment.url + res.data.picture;
     })
-
-}
+  }
 
 
   addToCollection() {

@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CollectionService } from 'src/app/services/collection.service';
 import { ProductService } from 'src/app/services/product.service';
+import { UserService } from 'src/app/services/user.service';
 import {ActivatedRoute , Router} from '@angular/router';
 import Swal from 'sweetalert2';
 import { NgxSpinnerService } from "ngx-spinner"; 
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -16,6 +18,8 @@ export class HomeComponent implements OnInit {
   collections:any = []; 
   allProducts:any = [];
   username: any;
+  profile: any;
+  background: any;
   
 
   public slideConfig: any = {
@@ -56,8 +60,8 @@ export class HomeComponent implements OnInit {
     private productService: ProductService, 
     private collectionService: CollectionService,
     private spinnerService: NgxSpinnerService,
-    private route: ActivatedRoute ,
-    private router: Router
+    private router: Router,
+    private userService: UserService,
     ) { }
 
 
@@ -68,14 +72,19 @@ export class HomeComponent implements OnInit {
       this.collections = res.data;
       this.productService.getAdminProducts().subscribe((res:any)=>{
         this.allProducts = res.data;
+        this.userService.getImages(this.username).subscribe((res:any)=>{
+          console.log(res);
+          this.profile = environment.url + res.data.picture;
+          this.background = environment.url  + res.data.background;
+        })
+        setTimeout(() => {
+          this.spinnerService.hide();
+        }, 500);
         this.collections.forEach((c:any)=>{
           c.products = c.products.map((id:any)=>{
             const updatedProduct = {
               ...this.allProducts.filter((ap:any)=>ap._id === id)[0]
             }
-            setTimeout(() => {
-              this.spinnerService.hide();
-            }, 500);
             return updatedProduct;
           })
         })

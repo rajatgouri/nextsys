@@ -5,6 +5,7 @@ import {catchError, tap} from 'rxjs/operators'
 import { throwError } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
+import { HttpParams } from '@angular/common/http'
 import jwt_decode from 'jwt-decode';
 
 @Injectable({
@@ -38,7 +39,11 @@ export class AuthService {
   }
 
   checkUsername(data:any) {
-    return this.http.get(environment.baseUrl + 'auth/checkUsername' , data);
+    let params = new HttpParams();
+    params = params.append('userName', data.userName);
+    return this.http.get(environment.baseUrl + 'auth/checkUsername' , {
+      params: params
+    });
   }
 
   handleError(error:HttpErrorResponse) {

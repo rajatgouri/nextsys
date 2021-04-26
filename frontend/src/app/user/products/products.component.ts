@@ -38,6 +38,9 @@ export class ProductsComponent implements OnInit {
     this.spinnerService.show(); 
     this.collectionService.getUserCollection(null).subscribe((res:any)=>{
       this.myCollections = res.data;
+      setTimeout(() => {
+        this.spinnerService.hide();
+      }, 500);
       let myProducts:any = []
       this.myCollections.forEach((c:any)=>{
         c.products.forEach((p:any)=>{
@@ -50,9 +53,6 @@ export class ProductsComponent implements OnInit {
         this.myProducts = myProducts;
         if(this.myProducts,this.allProducts) {
           this.setDisabledAndShowForm(this.myProducts, this.allProducts);
-          setTimeout(() => {
-            this.spinnerService.hide();
-          }, 500);
         }
       });
     })

@@ -24,7 +24,7 @@ const decodeJWT = (req) => {
     const token = authHeader.split(' ')[1];
 
     var decodedValue = Buffer.from(token, 'base64').toString('ascii');
-    decodedValue = decodedValue.slice(decodedValue.search("id")+5,decodedValue.search("iat")-3);
+    decodedValue = decodedValue.slice(decodedValue.search("id")+5,decodedValue.search("picture")-3);
     return decodedValue;
 }
 module.exports = { authenticateJWT,decodeJWT }

@@ -4,16 +4,15 @@
 <!-- Top  banner -->
 <div id="back-photo">
   <img
-    src="https://wallpapercave.com/wp/wp2089935.jpg"
+    [src]="background"
     id="back-src"
     class="back-img"
     alt=""
   />
-  
 </div>
 
 <div id="profile-photo">
-  <img src="../../../assets/images/img_avatar.png" id="profile-src" />
+  <img [src]="profile" id="profile-src" />
 </div>
 <!-- Top banner end -->
 
@@ -22,9 +21,9 @@
 <!-- summer looks -->
 
 
-
 <div class="row">
   <div class="col-12">
+    <h1 *ngIf="!collections.length" class="text-center">This user has not added any Collections yet</h1>
     <div *ngFor="let collection of collections">
       <div *ngIf="collection.products.length>0" class="container mt-5">
         <h1 class="text-center">{{ collection.name }}</h1>

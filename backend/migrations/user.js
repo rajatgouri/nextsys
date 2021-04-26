@@ -12,7 +12,9 @@ exports.create = () => {
         },
         userName : 'dummy',
         email: 'dummy@gmail.com',
-        password: '123'
+        password: '123',
+        picture: "images/img_avatar.png",
+        background: "images/background-default.jpg"
 
     };
 
@@ -25,8 +27,9 @@ exports.create = () => {
         },
         userName : 'admin',
         email: 'admin@admin.com',
-        password: 'admin'
-
+        password: 'admin',
+        picture: "images/img_avatar.png",
+        background: "images/background-default.jpg"
     };
 
 

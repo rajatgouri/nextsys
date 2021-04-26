@@ -125,7 +125,7 @@
          
           <div class="form__row">
             <div class="component component--primary form__button">
-              <button type="button" class="btn btn--regular"id="sign-up-button" tabindex="0" (click)="signup()" >Sign up</button>
+              <button type="button" class="btn btn--regular"id="sign-up-button" tabindex="0" (click)="signup()" [attr.disabled]="!available == true? true: null" >Sign up</button>
             </div>
           </div>
           <div class="form__row sign-up__sign">

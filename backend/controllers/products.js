@@ -47,6 +47,7 @@ exports.addProduct = async (req,res,next) => {
         let updatedCollection = {
             ...data[0]
         };
+        console.log(updatedCollection);
         updatedCollection.products.push(productId);
         Collections.update(updatedCollection._key, updatedCollection)
         .then((data2,error)=>{
