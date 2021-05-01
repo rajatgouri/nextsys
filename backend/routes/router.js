@@ -3,6 +3,7 @@ const routes = [
     'auth',
     'product',
     'collection',
+    'admin'
 ];
 
 module.exports = {

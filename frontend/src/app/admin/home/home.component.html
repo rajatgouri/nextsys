@@ -1,0 +1,23 @@
+<div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+    <a  class="render-button" (click)="renderComponent('collections')">Collections</a>
+    <a class="render-button" (click)="renderComponent('products')">Products</a>
+    <a class="render-button" (click)="renderComponent('users')">Users</a>
+    <a class="render-button" (click)="auth.logout()">Logout</a>
+</div>
+
+<div id="main" >
+    <button class="openbtn" (click)="openNav()">&#9776;</button>
+</div>
+
+<div id="sub">
+    <div *ngIf="showCollections">
+        <app-admin-collections class="mt-2"></app-admin-collections>
+    </div>
+    <div *ngIf="showProduct">
+        <app-admin-products class="mt-2"></app-admin-products>
+    </div>
+    <div *ngIf="showUsers">
+        <app-user class="mt-2"></app-user>
+    </div>
+</div>

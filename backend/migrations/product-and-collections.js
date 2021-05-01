@@ -8,7 +8,7 @@ exports.createCollections = () => {
     let collection1 = {
         _key: 'summer',
         name: 'Summer',
-        userId: 'users/user1',
+        userId: 'user/user1',
         products : ['products/product1','products/product2','products/product3','products/product4','products/product5']
     };
 
@@ -16,7 +16,7 @@ exports.createCollections = () => {
     let collection2 = {
         _key: 'christmas',
         name: 'Christmas',
-        userId: 'users/user1',
+        userId: 'user/user1',
         products : ['products/product6','products/product7','products/product8','products/product9','products/product10','products/product11']
     };
 

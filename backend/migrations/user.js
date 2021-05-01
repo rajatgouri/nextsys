@@ -1,4 +1,5 @@
 const db = require('./database');
+const bcrypt = require('bcrypt');
 
 const collection = db.collection('user');
 
@@ -27,7 +28,8 @@ exports.create = () => {
         },
         userName : 'admin',
         email: 'admin@admin.com',
-        password: 'admin',
+        // Admin123@ is the password
+        password: '$2b$10$a6zBy6OGT7oPvr.0pBeLcuDLAtLDqhNwI6vf0u6HVCGMLdlM7Uq2i',
         picture: "images/img_avatar.png",
         background: "images/background-default.jpg"
     };

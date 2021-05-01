@@ -1,0 +1,40 @@
+<div class="mt-3 ml-1 mr-1">
+    <div className="row">
+        <div class="d-flex justify-content-between mt-2 mb-2">
+            <h4 class="mt-1">
+                Users
+            </h4>
+            <div class="input-group search-responsive">
+                <input type="text" class="form-control" placeholder="Search users" [(ngModel)]="searchAll">
+                <div class="input-group-append">
+                    <button class="btn btn-primary"><i class="fa fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+      <div className="row">
+        <div className="col-lg-12 col-sm-12 col-12 col-md-12">
+            <table class="table" borderLess responsive>
+                <thead class="thead-light">
+                  <tr>
+                    <th> Image</th>
+                    <th scope="col">Name</th>
+                    <th class="mobile-hidden i-pad-hidden">Username</th>
+                    <th class="mobile-hidden i-pad-hidden">Email</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of allUsers | searchAdminFilter: searchAll">
+                    <td><img class="rounded-circle shadow" height="40" width="45" [src]="item.picture"></td>
+                    <td>{{item.name}}</td>
+                    <td class="mobile-hidden">{{item.userName}}</td>
+                    <td class="mobile-hidden i-pad-hidden">{{item.email}}</td>
+                    <td>
+                        <button type="submit" class="btn btn-primary" (click)="userDetails(item.userName)">View Details </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+      </div>
+</div>

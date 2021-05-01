@@ -4,7 +4,7 @@ const checkAuth = require('../middleware/auth');
 
 router.get('/get-products', products.getAllProducts);
 router.post('/add-product',checkAuth.authenticateJWT,  products.addProduct);
-router.delete('/remove-product',checkAuth.authenticateJWT,  products.removeProduct)
+router.delete('/remove-product',checkAuth.authenticateJWT,  products.removeProduct);
 
 module.exports = {
   router: router,

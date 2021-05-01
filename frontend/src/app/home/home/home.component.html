@@ -23,7 +23,7 @@
 
 <div class="row">
   <div class="col-12">
-    <h1 *ngIf="!collections.length" class="text-center">This user has not added any Collections yet</h1>
+    <h1 *ngIf="!collections.length" class="text-center not-added">This user has not added any Collections yet</h1>
     <div *ngFor="let collection of collections">
       <div *ngIf="collection.products.length>0" class="container mt-5">
         <h1 class="text-center">{{ collection.name }}</h1>

@@ -8,11 +8,12 @@ import { HomeModule } from './home/home.module';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserModule } from './user/user.module';
+import { AdminModule } from './admin/admin.module';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -21,6 +22,7 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
     AuthModule,
     UserModule,
     HttpClientModule,
+    AdminModule,
     BrowserAnimationsModule
   ],
   providers: [

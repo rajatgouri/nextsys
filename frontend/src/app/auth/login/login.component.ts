@@ -29,7 +29,11 @@ export class LoginComponent implements OnInit {
       console.log('invalid'); return;
     }
     this.authService.login(this.loginForm.value).subscribe((response: any) => {
-      this.router.navigate(['/user/profile'])
+      if (response.role === 'roles/super') {
+        this.router.navigate(['/admin/home'])
+      } else {
+        this.router.navigate(['/user/profile'])
+      }
     }, error => {
       this.toastService.toast(error)
 

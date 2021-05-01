@@ -82,7 +82,7 @@ exports.login = async (req,res,next) => {
         }
 
         const token = await jwt.sign(payload, config.jwt.accessToken.secretKey, options)
-        res.status(200).send({msg: 'logged in', token : token})
+        res.status(200).send({msg: 'logged in', token : token , role : user.role})
     })(req,res,next);  
 }
 

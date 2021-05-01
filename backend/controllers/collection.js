@@ -80,7 +80,7 @@ exports.getUserCollection =  (req,res, next ) => {
 }
 
 exports.getAdminCollection =  (req,res, next ) => {
-    db.query("FOR c IN collections FILTER c.userId=='users/user1' RETURN c")
+    db.query("FOR c IN collections FILTER c.userId=='user/user1' RETURN c")
     .then(cursor => cursor.all()).
     then((data,error)=>{
         if (error) {

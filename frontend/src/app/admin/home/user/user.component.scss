@@ -1,0 +1,15 @@
+.search-responsive {
+    width: 400px;
+}
+
+@media(max-width: 870px){
+    .search-responsive {
+        width: 270px;
+    }
+}
+
+@media(max-width: 450px){
+    .search-responsive {
+        width: 200px;
+    }
+}

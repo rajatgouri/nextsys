@@ -1,0 +1,25 @@
+input[type="file"] {
+    visibility: hidden;
+}
+
+.search-responsive {
+    width: 400px;
+}
+
+@media(max-width: 870px){
+    .i-pad-hidden{
+        display: none;
+    }
+    .search-responsive {
+        width: 270px;
+    }
+}
+
+@media(max-width: 450px){
+    .mobile-hidden{
+        display: none;
+    }
+    .search-responsive {
+        width: 200px;
+    }
+}
