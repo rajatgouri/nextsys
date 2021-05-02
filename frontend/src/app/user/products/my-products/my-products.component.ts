@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../../services/product.service';
-import { CollectionService } from '../../services/collection.service';
+import { ProductService } from '../../../services/product.service';
+import { CollectionService } from '../../../services/collection.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { environment } from '../../../environments/environment';
-import { NgxSpinnerService } from "ngx-spinner";  
+import { NgxSpinnerService } from "ngx-spinner"; 
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  selector: 'app-my-products',
+  templateUrl: './my-products.component.html',
+  styleUrls: ['./my-products.component.scss']
 })
-export class ProductsComponent implements OnInit {
+export class MyProductsComponent implements OnInit {
 
   allProducts : any = [];
   searchAll = '';
@@ -31,13 +30,6 @@ export class ProductsComponent implements OnInit {
   ngOnInit(): void {
     this.productService.getAdminProducts().subscribe((res:any)=>{
       this.allProducts = res.data; 
-      this.allProducts = this.allProducts.map((p:any)=>{
-        const updated = {
-          ...p,
-          img: p.img.includes("http") ? p.img : environment.url + p.img
-        }
-        return updated;
-      });
       this.fetchProducts();
     });
   }
@@ -102,4 +94,5 @@ export class ProductsComponent implements OnInit {
   toggleForm(index:any){
     this.allProducts[index].showForm =  !this.allProducts[index].showForm;
   }
+
 }

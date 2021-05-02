@@ -12,12 +12,20 @@ import { AdminCollectionsComponent } from './home/admin-collections/admin-collec
 import { SearchAdminFilterPipe } from '../pipes/searchAdmin.pipe';
 import { AdminProductsComponent } from './home/admin-products/admin-products.component';
 import { UserComponent } from './home/user/user.component';
+import { UserDetailsComponent} from './home/user-details/user-details.component';
 
 const routes: Routes = [
   {
   path: 'home',
   canActivate: [AuthGuardService],
   component: HomeComponent,
+  children: [
+  ]
+},
+{
+  path: 'user/:username',
+  canActivate: [AuthGuardService],
+  component: UserDetailsComponent,
   children: [
   ]
 }];
@@ -29,7 +37,8 @@ const routes: Routes = [
     AdminCollectionsComponent,
     SearchAdminFilterPipe,
     AdminProductsComponent,
-    UserComponent
+    UserComponent,
+    UserDetailsComponent
   ],
   imports: [
     CommonModule,

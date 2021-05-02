@@ -1,0 +1,42 @@
+<div class="card outer-card">
+    <div class="card-header text-center header-collection">My Collections</div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-12">
+          <div class="search-container">
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="Search collections" [(ngModel)]="searchMy">
+              <div class="input-group-append">
+                  <button class="btn btn-success"><i class="fa fa-search"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+          <table class="table responsive">
+            <thead> 
+              <tr>
+                <th>Name</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let product of myCollections | searchFilter: searchMy">
+              <tr  >
+                <td>
+                  <p  class="w-100" data-toggle="modal" data-target="#exampleModal">
+                    {{product.name}}
+                  </p>
+                </td>
+                <td >
+                  <button class="btn btn-danger add-button mt-2"
+                  (click)="removeCollection(product._id)"><i class="fas fa-trash"></i></button>
+                </td>
+              </tr>
+              
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+

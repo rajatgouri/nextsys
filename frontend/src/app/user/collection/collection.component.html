@@ -16,7 +16,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-12">
+              <div class="col-12 scrollable mt-1 pb-1">
                 <div *ngFor="let collection of adminCollections | searchFilter: searchAll">
                   <div class="card bg-light mb-3 collection-card">
                     <div class="card-body">
@@ -45,27 +45,29 @@
                     </div>
                   </div>
                 </div>
-  
-                <div *ngIf="showForm" class="card bg-light mb-3 collection-card">
-                  <div class="card-body">
-                    <form [formGroup]="collectionForm">
-                      <div class="form-group">
-                        <label for="collectionName" class="collection text-center">Collection Name</label>
-                        <input type="text" formControlName="name" required class="form-control" id="collectionName" placeholder="Enter Collection Name" name="userName">
-                      </div>
-                      <button type="submit" class="btn btn-success" (click)="submitForm()">Add </button>
-                      <button type="submit" class="ml-2 btn btn-danger" (click)="toggleForm()">Close</button>
-                    </form>
-                  </div>
-                </div>
-                <div *ngFor="let collection of myCollections | searchFilter: searchMy">
-                  <div class="card bg-light mb-3 collection-card">
+                <div class="scrollable col-12 mt-2">
+                  <div *ngIf="showForm" class="card bg-light mb-3 collection-card">
                     <div class="card-body">
-                      <h5 class="card-title collection text-center">{{collection.name}}</h5>
-                      <button class="btn btn-danger add-button mt-2" (click)="removeCollection(collection)"><i class="fas fa-trash"></i></button>
+                      <form [formGroup]="collectionForm">
+                        <div class="form-group">
+                          <label for="collectionName" class="collection text-center">Collection Name</label>
+                          <input type="text" formControlName="name" required class="form-control" id="collectionName" placeholder="Enter Collection Name" name="userName">
+                        </div>
+                        <button type="submit" class="btn btn-success" (click)="submitForm()">Add </button>
+                        <button type="submit" class="ml-2 btn btn-danger" (click)="toggleForm()">Close</button>
+                      </form>
+                    </div>
+                  </div>
+                  <div *ngFor="let collection of myCollections | searchFilter: searchMy">
+                    <div class="card bg-light mb-3 collection-card">
+                      <div class="card-body">
+                        <h5 class="card-title collection text-center">{{collection.name}}</h5>
+                        <button class="btn btn-danger add-button mt-2" (click)="removeCollection(collection)"><i class="fas fa-trash"></i></button>
+                      </div>
                     </div>
                   </div>
                 </div>
+  
               </div>      
             </div>
           </div>

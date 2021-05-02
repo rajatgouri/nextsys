@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Input } from '@angular/core';
 import {AdminService} from "../../../services/admin.service";
 import { environment } from '../../../../environments/environment';
 import { Router } from '@angular/router';
@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 export class UserComponent implements OnInit {
   allUsers: any = []
   searchAll= '';
+  userName = '';
+  @Input() showUserDetails: any ;
   
   constructor(
     private admin: AdminService,
@@ -36,7 +38,8 @@ export class UserComponent implements OnInit {
   }
 
   userDetails(name:any){
-    this.router.navigate(['/home/' + name])
+    this.showUserDetails = true;
+    this.userName = name;
   }
 
 }

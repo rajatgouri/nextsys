@@ -1,6 +1,6 @@
 @font-face {
     font-family: Cassandra;
-    src: url(../../../fonts/CassandraPersonalUseRegular-3BjG.ttf);
+    src: url(../../../../fonts/CassandraPersonalUseRegular-3BjG.ttf);
   }
 
 
@@ -14,17 +14,12 @@ h1 {
 }
 
 .collection-card:hover {
-  transform: scale(1.01);
+  transform: scale(1.1);
 }
 
 .carousel-inner img {
   width: 100%;
   height: 100%;
-}
-
-.add-button {
-  width: 100%;
-  font-size: 1rem;
 }
 
 .collection{
@@ -33,14 +28,14 @@ h1 {
   font-size: 2rem;
 }
 
+.outer-card{
+  height: 500px;
+  overflow: scroll;
+}
+
 .header-collection {
   font-family: 'Fredoka One', cursive;
   font-size: 2rem;
-}
-
-.scrollable {
-  height: 320px;
-  overflow: scroll;
 }
 
 @media screen and (max-width: 768px) {

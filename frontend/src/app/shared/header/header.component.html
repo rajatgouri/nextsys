@@ -11,17 +11,13 @@
 
 
         <li class="nav-item dropdown dropbottom">
-          <a class="nav-link dropdown-toggle"   role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40" height="40" class="rounded-circle">
+          <a class="nav-link dropdown-toggle"  *ngIf="auth.isAuthenticated()"  role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img [src]="baseUrl + user.picture" width="40" height="40" class="rounded-circle">
           </a>
         <div class="dropdown-menu" *ngIf="auth.isAuthenticated()">
           <a class="dropdown-item" routerLink="/user/profile">User Profile</a>
           <a *ngIf="user" class="dropdown-item" [routerLink]="['/home', user.username]">Home</a>
           <a class="dropdown-item clickable" (click)="auth.logout()">Logout</a>
-        </div>
-        <div class="dropdown-menu" *ngIf="!auth.isAuthenticated()">
-          <a class="dropdown-item clickable" routerLink="/auth/login">Login</a>
-          <a class="dropdown-item clickable" routerLink="/auth/signup">Sign Up</a>
         </div>
       </li>   
     </ul>

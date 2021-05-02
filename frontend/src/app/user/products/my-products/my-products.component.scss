@@ -1,20 +1,32 @@
 @font-face {
     font-family: Cassandra;
-    src: url(../../../fonts/CassandraPersonalUseRegular-3BjG.ttf);
+    src: url(../../../../fonts/CassandraPersonalUseRegular-3BjG.ttf);
   }
 
 
 h1 {
   font-family: cassandra;
 }
+.scrollable {
+    height: 320px;
+    overflow: scroll;
+  }
+@media(max-width: 450px){
+  .mobile-hidden{
+    display: none;
+  }
+}
 
-
+.modal{
+  padding-left: 20px;
+  padding-right: 20px !important;
+}
 .collection-card {
   transition: transform .2s;
 }
 
 .collection-card:hover {
-  transform: scale(1.01);
+  transform: scale(1.03);
 }
 
 .carousel-inner img {
@@ -22,10 +34,6 @@ h1 {
   height: 100%;
 }
 
-.add-button {
-  width: 100%;
-  font-size: 1rem;
-}
 
 .collection{
   font-family: 'Shadows Into Light', cursive;
@@ -33,19 +41,14 @@ h1 {
   font-size: 2rem;
 }
 
+.dropdown {
+  font-family: 'Shadows Into Light', cursive;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
 .header-collection {
   font-family: 'Fredoka One', cursive;
   font-size: 2rem;
 }
 
-.scrollable {
-  height: 320px;
-  overflow: scroll;
-}
-
-@media screen and (max-width: 768px) {
-  .outer-card{
-    height: 500px;
-    overflow: scroll;
-  }
-}

@@ -1,26 +1,26 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component, OnInit ,Input } from '@angular/core';
 import { CollectionService } from 'src/app/services/collection.service';
 import { ProductService } from 'src/app/services/product.service';
 import { UserService } from 'src/app/services/user.service';
 import {ActivatedRoute , Router} from '@angular/router';
 import Swal from 'sweetalert2';
 import { NgxSpinnerService } from "ngx-spinner"; 
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../../environments/environment';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-user-details',
+  templateUrl: './user-details.component.html',
+  styleUrls: ['./user-details.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class UserDetailsComponent implements OnInit {
 
   collections:any = []; 
   allProducts:any = [];
-  username: any;
   profile: any;
   background: any;
   notExists: any = false;
+  @Input() username: any;
   
 
   public slideConfig: any = {
@@ -69,7 +69,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.spinnerService.show(); 
-    this.username = (this.router.url.slice(6));
     this.collectionService.getUserCollection(this.username).subscribe((res:any)=>{
       if(res.msg === "No user exists"){
         this.notExists = true;

@@ -1,5 +1,13 @@
 <div class="mt-3 ml-1 mr-1">
-    <div className="row">
+    <div *ngIf="showUserDetails">
+      <div class="col-12 d-flex justify-content-end">
+        <button class="btn btn-primary text-centre mb-3" (click)="showUserDetails=false">
+            All users
+        </button>
+    </div>
+        <app-user-details class="mt-2" [username]="userName"></app-user-details>
+    </div>
+    <div className="row" *ngIf="!showUserDetails">
         <div class="d-flex justify-content-between mt-2 mb-2">
             <h4 class="mt-1">
                 Users

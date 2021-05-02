@@ -9,14 +9,14 @@
               <div class="col-12">
                 <div class="search-container">
                   <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Search collections" [(ngModel)]="searchAll">
+                    <input type="text" class="form-control" placeholder="Search products" [(ngModel)]="searchAll">
                     <div class="input-group-append">
                         <button class="btn btn-primary"><i class="fa fa-search"></i></button>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-12">
+              <div class="col-12 scrollable">
                 <table class="table table-responsive table-condensed" id="myTable">
                   <thead>
                     <tr>
@@ -33,9 +33,9 @@
                         <img class="rounded-circle shadow" height="40" width="45" [src]="product.img">
                       </td>
                       <td>
-                        <button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#exampleModal">
+                        <p data-toggle="modal" data-target="#exampleModal">
                           {{product.name}}
-                        </button>
+                        </p>
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -99,14 +99,14 @@
               <div class="col-12">
                 <div class="search-container">
                   <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Search collections" [(ngModel)]="searchMy">
+                    <input type="text" class="form-control" placeholder="Search products" [(ngModel)]="searchMy">
                     <div class="input-group-append">
                         <button class="btn btn-success"><i class="fa fa-search"></i></button>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-12">
+              <div class="col-12 scrollable">
                 <table class="table table-responsive">
                   <thead>
                     <tr>
@@ -123,9 +123,9 @@
                         <img class="rounded-circle shadow" height="40" width="45" [src]="product.img">
                       </td>
                       <td>
-                        <button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#exampleModal">
+                        <p data-toggle="modal" data-target="#exampleModal">
                           {{product.name}}
-                        </button>
+                        </p>
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">

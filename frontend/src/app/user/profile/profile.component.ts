@@ -117,6 +117,10 @@ export class ProfileComponent implements OnInit {
     })
   }
 
+  toggle(){
+    document.getElementById('sidebar')?.classList.toggle('hidden')
+  }
+
 
   addToCollection() {
     this.toast('Added To The Collection')

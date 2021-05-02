@@ -86,6 +86,14 @@ filter: brightness(40%);
   box-shadow: 0px 0px 8px;
 }
 
+#openbtn{
+  display: none;
+}
+
+.hidden{
+  display: none;
+}
+
 
 @media only screen and (max-width: 768px) {
   .back-img{
@@ -104,7 +112,6 @@ filter: brightness(40%);
     left: 42%;
     color: white;
     font-size: 3.5vw;
-  
 }
 #profile-photo {
     padding: 6px;
@@ -117,8 +124,20 @@ filter: brightness(40%);
     margin-top: -10%;
     overflow: hidden;
  }
+ 
 }
 @media only screen and (max-width: 576px) {
+
+  .mobile-hidden{
+    display: none;
+  }
+  
+  #openbtn{
+    display: block;
+    border: none;
+    background-color: white;
+  }
+
   .back-img{
     background-repeat: no-repeat;
     background-size: cover;

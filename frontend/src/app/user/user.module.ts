@@ -14,6 +14,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ViewProductComponent } from './products/view-product/view-product.component';
 import { SearchFilterPipe } from '../pipes/search.pipe';
+import { MyProductsComponent } from './products/my-products/my-products.component';
+import { MyCollectionsComponent } from './collection/my-collections/my-collections.component';
 
 const routes: Routes = [
   {
@@ -30,6 +32,12 @@ const routes: Routes = [
     {
       path: 'products', component:  ProductsComponent 
     },
+    {
+      path: 'my-products', component:  MyProductsComponent 
+    },
+    {
+      path: 'my-collections', component:  MyCollectionsComponent 
+    },
   ]
 }];
 
@@ -42,7 +50,9 @@ const routes: Routes = [
     SidebarComponent,
     ProductsComponent,
     ViewProductComponent,
-    SearchFilterPipe
+    SearchFilterPipe,
+    MyProductsComponent,
+    MyCollectionsComponent
   ],
   imports: [
     CommonModule,
