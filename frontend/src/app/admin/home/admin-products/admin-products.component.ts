@@ -21,6 +21,7 @@ export class AdminProductsComponent implements OnInit {
     price : new FormControl(null,Validators.required),
     discount : new FormControl(null,Validators.required),
     img : new FormControl(null,Validators.required),
+    link : new FormControl(null,Validators.required),
     _id: new FormControl(null,)
   });
 
@@ -53,6 +54,7 @@ export class AdminProductsComponent implements OnInit {
       price : this.productForm.value.price,
       discount : this.productForm.value.discount,
       img : this.croppedImage,
+      link: this.productForm.value.link,
       _id: this.productForm.value._id? this.productForm.value._id: null
     }
     console.log(newProduct);
@@ -90,7 +92,8 @@ export class AdminProductsComponent implements OnInit {
       currency: product.currency,
       price: product.price,
       discount: product.discount,
-      img : product.img
+      img : product.img,
+      link : product.link
     });
     document.getElementById("openModal")?.click();
   }
@@ -108,7 +111,8 @@ export class AdminProductsComponent implements OnInit {
       price : null,
       discount : null,
       img : null,
-      _id: null
+      _id: null,
+      link: null
     })
   }
 

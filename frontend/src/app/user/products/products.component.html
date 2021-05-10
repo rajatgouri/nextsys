@@ -22,6 +22,7 @@
                     <tr>
                       <th>Image</th>
                       <th>Name</th>
+                      <th>Link</th>
                       <th class="mobile-hidden">Price</th>
                       <th class="mobile-hidden">Discount</th>
                       <th>Action</th>
@@ -56,7 +57,7 @@
                       </td>
                       
                       <!-- Modal -->
-                    
+                      <td><a [href]="product.link">View</a></td>
                       <td class="mobile-hidden">{{product.price}}</td>
                       <td class="mobile-hidden">{{product.discount}} %</td>
                       <td class="text-success">
@@ -124,6 +125,7 @@
                     <tr>
                       <th>Image</th>
                       <th>Name</th>
+                      <th>Link</th>
                       <th class="mobile-hidden">Price</th>
                       <th class="mobile-hidden">Discount</th>
                       <th>Action</th>
@@ -156,6 +158,7 @@
                           </div>
                         </div>
                       </td>
+                      <td><a [href]="product.link">View</a></td>
                       <td class="mobile-hidden">{{product.price}}</td>
                       <td class="mobile-hidden">{{product.discount}} %</td>
                       <td >

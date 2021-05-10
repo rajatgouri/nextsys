@@ -27,6 +27,10 @@
                             <input type="text" formControlName="price" required class="form-control" id="productPrice" placeholder="Enter Product Price">
                         </div>
                         <div class="form-group">
+                            <label for="productLink" class="collection text-center">Product link</label>
+                            <input type="text" formControlName="link" required class="form-control" id="productLink" placeholder="Enter Product Link">
+                        </div>
+                        <div class="form-group">
                             <label for="productDiscount" class="collection text-center">Product Discount</label>
                             <input type="text" formControlName="discount" required class="form-control" id="productDiscount" placeholder="Enter Product Discount">
                         </div>
@@ -76,8 +80,9 @@
             <table class="table" borderLess responsive>
                 <thead class="thead-light">
                   <tr>
-                    <th> Image</th>
+                    <th class="mobile-hidden i-pad-hidden"> Image</th>
                     <th scope="col">Name</th>
+                    <th scope="col">Link</th>
                     <th class="mobile-hidden">Price</th>
                     <th class="mobile-hidden i-pad-hidden">Discount</th>
                     <th class="mobile-hidden i-pad-hidden">Currency</th>
@@ -86,8 +91,9 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let item of allProducts | searchAdminFilter: searchAll">
-                    <td><img class="rounded-circle shadow" height="40" width="45" [src]="item.img"></td>
+                    <td  class="mobile-hidden i-pad-hidden"><img class="rounded-circle shadow" height="40" width="45" [src]="item.img"></td>
                     <td>{{item.name}}</td>
+                    <td><a [href]="item.link">View</a></td>
                     <td class="mobile-hidden">{{item.price}}</td>
                     <td class="mobile-hidden i-pad-hidden">{{item.discount}} %</td>
                     <td class="mobile-hidden i-pad-hidden">{{item.currency}}</td>
