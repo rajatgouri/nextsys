@@ -1,5 +1,17 @@
 <div class="card outer-card">
-    <div class="card-header text-center header-collection">My Products</div>
+    <div class="card-header text-center header-collection d-flex">
+      <span class="flex-grow-1">
+        My Products 
+      </span>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-filter" aria-hidden="true"></i>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <p class="dropdown-item clickable" *ngFor="let collection of myCollections" (click)="filterProducts(collection._id)">{{collection.name}}</p>
+        </div>
+      </div>
+    </div>
     <div class="card-body">
       <div class="row">
         <div class="col-12">
@@ -22,15 +34,15 @@
                 <th>Action</th>
               </tr>
             </thead>
-            <tbody *ngFor="let product of myProducts | searchFilter: searchMy">
+            <tbody *ngFor="let product of filteredMyProducts | searchFilter: searchMy">
               <tr  >
                 <td>
                   <img class="rounded-circle shadow" height="40" width="45" [src]="product.img">
                 </td>
                 <td>
-                  <button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#exampleModal">
+                  <p class="w-100 clickable" data-toggle="modal" data-target="#exampleModal">
                     {{product.name}}
-                  </button>
+                  </p>
                   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">

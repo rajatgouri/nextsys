@@ -16,6 +16,7 @@ export class ProductsComponent implements OnInit {
   searchAll = '';
   searchMy = '';
   myProducts: any = [];
+  filteredMyProducts: any = [];
   myCollections: any = [];
   
   collectionForm : FormGroup=new FormGroup({
@@ -59,8 +60,9 @@ export class ProductsComponent implements OnInit {
           });
         })
         this.myProducts = myProducts;
-        if(this.myProducts,this.allProducts) {
-          this.setDisabledAndShowForm(this.myProducts, this.allProducts);
+        this.filteredMyProducts = this.myProducts;
+        if(this.filteredMyProducts,this.allProducts) {
+          this.setDisabledAndShowForm(this.filteredMyProducts, this.allProducts);
         }
       });
     })
@@ -101,5 +103,9 @@ export class ProductsComponent implements OnInit {
 
   toggleForm(index:any){
     this.allProducts[index].showForm =  !this.allProducts[index].showForm;
+  }
+
+  filterProducts(collectionId:any){
+    this.filteredMyProducts = this.myProducts.filter((p:any) => p.collectionId === collectionId);
   }
 }

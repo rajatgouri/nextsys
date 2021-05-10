@@ -17,6 +17,10 @@ table {
   overflow: scroll;
 }
 
+.clickable{
+  cursor: pointer;
+}
+
 @media(max-width: 450px){
   .mobile-hidden{
     display: none;
