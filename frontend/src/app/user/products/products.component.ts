@@ -43,6 +43,11 @@ export class ProductsComponent implements OnInit {
     });
   }
 
+  toggleIcon2() {
+    document.getElementById("chevronHiddenUp2")?.classList.toggle('chevron-hidden');
+    document.getElementById("chevronHiddenDown2")?.classList.toggle('chevron-hidden');
+  }
+
   fetchProducts() {
     this.spinnerService.show(); 
     this.collectionService.getUserCollection(null).subscribe((res:any)=>{

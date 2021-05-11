@@ -8,6 +8,14 @@ h1 {
   font-family: cassandra;
 }
 
+.chevron-hidden{
+  display: none;
+}
+
+.chevron-block{
+  display: block;
+}
+
 
 .collection-card {
   transition: transform .2s;
@@ -36,6 +44,7 @@ h1 {
 .header-collection {
   font-family: 'Fredoka One', cursive;
   font-size: 2rem;
+  cursor: pointer;
 }
 
 .scrollable {

@@ -41,6 +41,25 @@ export class CollectionComponent implements OnInit {
     })
   }
 
+  toggleIcon1() {
+    document.getElementById("chevronHiddenUp")?.classList.toggle('chevron-hidden');
+    document.getElementById("chevronHiddenDown")?.classList.toggle('chevron-hidden');
+  }
+
+  toggle3() {
+    document.getElementById("myCollectionHidden")?.classList.remove('chevron-block');
+    document.getElementById("myCollectionHidden")?.classList.add('chevron-block');
+    document.getElementById("myProductsHiddden")?.classList.add('chevron-hidden');
+    document.getElementById("myProductsHiddden")?.classList.remove('chevron-block');
+  }
+
+  toggle4() {
+    document.getElementById("myCollectionHidden")?.classList.remove('chevron-block');
+    document.getElementById("myCollectionHidden")?.classList.add('chevron-hidden');
+    document.getElementById("myProductsHiddden")?.classList.add('chevron-block');
+    document.getElementById("myProductsHiddden")?.classList.remove('chevron-hidden');
+  }
+
   addCollection(collection:any) {
     let newCollection = {
       name : collection.name,

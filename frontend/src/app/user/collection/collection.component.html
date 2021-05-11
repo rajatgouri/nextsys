@@ -1,10 +1,21 @@
+<div class="row" >
+  <div class="col-12 d-flex justify-content-end px-0">
+    <button (click)="toggle3()" class="btn">My Collection</button>
+    <button (click)="toggle4()" class="btn">My Products</button>
+  </div>
+</div>
 <div class="row mt-3">
   <div class="col-12 d-flex justify-content-between px-0">
     <div class="row">
       <div class="col-lg-6 col-md-12 col-sm-12 col-12 mb-3 px-0">
         <div class="card outer-card">
-          <div class="card-header text-center header-collection">Global Collections</div>
-          <div class="card-body">
+          <div class="card-header header-collection" data-toggle="collapse" (click)="toggleIcon1()" data-target="#globalCollection">
+            <div class="d-flex justify-content-between align-center">
+              <div> Global Collections</div>
+              <div><i id="chevronHiddenDown" class="fas fa-chevron-down"></i><i id="chevronHiddenUp" class="fas fa-chevron-up chevron-hidden"></i></div>
+            </div>
+          </div>
+          <div class="card-body collapse out" id="globalCollection">
             <div class="row">
               <div class="col-12">
                 <div class="search-container">
@@ -29,14 +40,14 @@
             </div>
           </div>
         </div>
+        <app-products></app-products>
       </div>
       <div class="col-lg-6 col-md-12 col-sm-12 col-12 mb-3 px-0">
-        <div class="card outer-card">
+        <div class="card outer-card chevron-block"  id="myCollectionHidden">
           <div class="card-header text-center header-collection">My Collections <i class="fa fa-plus ml-2 rounded-circle bg-primary" aria-hidden="true" (click)="toggleForm()"></i></div>
           <div class="card-body">
             <div class="row">
               <div class="col-12">
-  
                 <div class="search-container">
                   <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Search collections" [(ngModel)]="searchMy">
@@ -67,15 +78,15 @@
                     </div>
                   </div>
                 </div>
-  
               </div>      
             </div>
           </div>
         </div>
+        <div>
+        <app-my-products id="myProductsHiddden" class="chevron-hidden"></app-my-products>
+        </div>
       </div>
-
     </div>
-    
   </div>
 </div>
 

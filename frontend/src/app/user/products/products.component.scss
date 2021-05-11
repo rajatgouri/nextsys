@@ -12,6 +12,10 @@ table {
   table-layout: fixed;
 }
 
+.chevron-hidden{
+  display: none;
+}
+
 .scrollable {
   height: 320px;
   overflow: scroll;
@@ -68,5 +72,6 @@ table {
 .header-collection {
   font-family: 'Fredoka One', cursive;
   font-size: 2rem;
+  cursor: pointer;
 }
 
