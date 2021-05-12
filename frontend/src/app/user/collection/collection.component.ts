@@ -51,6 +51,8 @@ export class CollectionComponent implements OnInit {
     document.getElementById("myCollectionHidden")?.classList.add('chevron-block');
     document.getElementById("myProductsHiddden")?.classList.add('chevron-hidden');
     document.getElementById("myProductsHiddden")?.classList.remove('chevron-block');
+    document.getElementById("buttonToggle1")?.classList.add('active');
+    document.getElementById("buttonToggle2")?.classList.remove('active');
   }
 
   toggle4() {
@@ -58,6 +60,8 @@ export class CollectionComponent implements OnInit {
     document.getElementById("myCollectionHidden")?.classList.add('chevron-hidden');
     document.getElementById("myProductsHiddden")?.classList.add('chevron-block');
     document.getElementById("myProductsHiddden")?.classList.remove('chevron-hidden');
+    document.getElementById("buttonToggle1")?.classList.remove('active');
+    document.getElementById("buttonToggle2")?.classList.add('active');
   }
 
   addCollection(collection:any) {

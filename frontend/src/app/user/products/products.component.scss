@@ -15,7 +15,9 @@ table {
 .chevron-hidden{
   display: none;
 }
-
+::-webkit-scrollbar {
+  width: 3px;
+}
 .scrollable {
   height: 320px;
   overflow: scroll;

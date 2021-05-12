@@ -8,15 +8,34 @@ h1 {
   font-family: cassandra;
 }
 
+.border {
+  border-radius: 5px;
+}
+
 .chevron-hidden{
   display: none;
+}
+
+#padding-20{
+  padding:12px 20px;
+  height: 63px !important;
+}
+
+.btn-custom{
+  margin: 0px 10px;
+  font-family: 'Fredoka One', cursive;
 }
 
 .chevron-block{
   display: block;
 }
 
-
+::-webkit-scrollbar {
+  width: 3px;
+}
+.card-1{
+  max-height: 250px;
+}
 .collection-card {
   transition: transform .2s;
 }
@@ -52,9 +71,31 @@ h1 {
   overflow: scroll;
 }
 
+.outer-card{
+  height: 500px;
+  overflow: scroll;
+}
+
 @media screen and (max-width: 768px) {
   .outer-card{
     height: 500px;
     overflow: scroll;
+  }
+  .hidden{
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .btn-custom{
+    margin: 0px 7px;
+    font-size:13px;
+  }
+  #padding-20{
+    padding:12px 5px;
+    height: 63px !important;
+  }
+  .custom-col-12{
+    padding: 0;
   }
 }

@@ -16,7 +16,9 @@ h1 {
     display: none;
   }
 }
-
+::-webkit-scrollbar {
+  width: 3px;
+}
 .modal{
   padding-left: 20px;
   padding-right: 20px !important;

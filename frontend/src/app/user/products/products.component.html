@@ -1,102 +1,90 @@
-<div class="row mt-3">
-  <div class="col-lg-12 col-md-12 col-sm-12 col-12 d-flex justify-content-between px-0">
-    <div class="row">
-      <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-3 px-0">
-        <div class="card outer-card">
-          <div class="card-header header-collection" data-toggle="collapse" (click)="toggleIcon2()" data-target="#globalProducts">
-            <div class="d-flex justify-content-between align-center">
-              <div> Global Products</div>
-              <div><i id="chevronHiddenDown2" class="fas fa-chevron-down"></i><i id="chevronHiddenUp2" class="fas fa-chevron-up chevron-hidden"></i></div>
-            </div>
+<div class="card-header header-collection" data-toggle="collapse" (click)="toggleIcon2()" data-target="#globalProducts">
+  <div class="d-flex justify-content-between align-center">
+    <div> Global Products</div>
+    <div><i id="chevronHiddenDown2" class="fas fa-chevron-down"></i><i id="chevronHiddenUp2" class="fas fa-chevron-up chevron-hidden"></i></div>
+  </div>
+</div>
+<div class="card-body collapse out" id="globalProducts">
+  <div class="row">
+    <div class="col-12">
+      <div class="search-container">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Search products" [(ngModel)]="searchAll">
+          <div class="input-group-append">
+              <button class="btn btn-primary"><i class="fa fa-search"></i></button>
           </div>
-          <div class="card-body collapse out" id="globalProducts">
-            <div class="row">
-              <div class="col-12">
-                <div class="search-container">
-                  <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Search products" [(ngModel)]="searchAll">
-                    <div class="input-group-append">
-                        <button class="btn btn-primary"><i class="fa fa-search"></i></button>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 scrollable">
+      <table class="table responsive table-condensed" id="myTable">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Link</th>
+            <th class="mobile-hidden">Price</th>
+            <th class="mobile-hidden">Discount</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let product of allProducts | searchFilter: searchAll;let i = index" class="panel">
+          <tr  >
+            <td>
+              <img class="rounded-circle shadow" height="40" width="45" [src]="product.img">
+            </td>
+            <td>
+              <p data-toggle="modal" class="clickable" data-target="#exampleModal">
+                {{product.name}}
+              </p>
+              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <app-view-product [product]="product"></app-view-product>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-12 scrollable">
-                <table class="table table-responsive table-condensed" id="myTable">
-                  <thead>
-                    <tr>
-                      <th>Image</th>
-                      <th>Name</th>
-                      <th>Link</th>
-                      <th class="mobile-hidden">Price</th>
-                      <th class="mobile-hidden">Discount</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody *ngFor="let product of allProducts | searchFilter: searchAll;let i = index" class="panel">
-                    <tr  >
-                      <td>
-                        <img class="rounded-circle shadow" height="40" width="45" [src]="product.img">
-                      </td>
-                      <td>
-                        <p data-toggle="modal" class="clickable" data-target="#exampleModal">
-                          {{product.name}}
-                        </p>
-                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                          <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
-                              </div>
-                              <div class="modal-body">
-                                <app-view-product [product]="product"></app-view-product>
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                      
-                      <!-- Modal -->
-                      <td><a [href]="product.link">View</a></td>
-                      <td class="mobile-hidden">{{product.price}}</td>
-                      <td class="mobile-hidden">{{product.discount}} %</td>
-                      <td class="text-success">
-                        <button class="btn btn-primary add-button mt-2" data-toggle="collapse" [attr.data-target]="'#demo'+ i"
-                        data-parent="#myTable" [attr.disabled]="myCollections.length > 0 ? null: true"><i class="fas fa-plus"></i></button>
-                      </td>
-                    </tr>
-                    <tr [attr.id]="'demo'+ i" class="collapse">
-                      <td colspan="6" class="hiddenRow">
-                        <div>
-                          <div class="card-body">
-                            <form [formGroup]="collectionForm">
-                              <div class="form-group dropdown">
-                                <label for="exampleFormControlSelect1">Select the Collection</label>
-                                <select formControlName="id" required class="form-control" placeholder="Collection" id="exampleFormControlSelect1">
-                                  <option *ngFor="let collection of myCollections" [value]="collection._id">{{collection.name}}</option>
-                                </select>
-                              </div>
-                              <button type="submit" class="btn btn-primary" (click)="addProduct(product._id)">Submit</button>
-                              <button type="submit" class="ml-2 btn btn-danger" data-toggle="collapse" [attr.data-target]="'#demo'+ i">Close</button>
-                            </form>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-  
-                  </tbody>
-                </table>
-                <!-- </div> -->
+            </td>
+            
+            <!-- Modal -->
+            <td><a [href]="product.link">View</a></td>
+            <td class="mobile-hidden">{{product.price}}</td>
+            <td class="mobile-hidden">{{product.discount}} %</td>
+            <td class="text-success">
+              <button class="btn btn-primary add-button mt-2" data-toggle="collapse" [attr.data-target]="'#demo'+ i"
+              data-parent="#myTable" [attr.disabled]="myCollections.length > 0 ? null: true"><i class="fas fa-plus"></i></button>
+            </td>
+          </tr>
+          <tr [attr.id]="'demo'+ i" class="collapse">
+            <td colspan="6" class="hiddenRow">
+              <div>
+                <div class="card-body">
+                  <form [formGroup]="collectionForm">
+                    <div class="form-group dropdown">
+                      <label for="exampleFormControlSelect1">Select the Collection</label>
+                      <select formControlName="id" required class="form-control" placeholder="Collection" id="exampleFormControlSelect1">
+                        <option *ngFor="let collection of myCollections" [value]="collection._id">{{collection.name}}</option>
+                      </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary" (click)="addProduct(product._id)">Submit</button>
+                    <button type="submit" class="ml-2 btn btn-danger" data-toggle="collapse" [attr.data-target]="'#demo'+ i">Close</button>
+                  </form>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

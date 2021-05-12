@@ -8,6 +8,9 @@ h1 {
   font-family: cassandra;
 }
 
+::-webkit-scrollbar {
+  width: 3px;
+}
 
 .collection-card {
   transition: transform .2s;
