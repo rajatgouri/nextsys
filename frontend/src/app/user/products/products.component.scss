@@ -8,10 +8,6 @@ h1 {
   font-family: cassandra;
 }
 
-table {
-  table-layout: fixed;
-}
-
 .chevron-hidden{
   display: none;
 }
@@ -77,3 +73,14 @@ table {
   cursor: pointer;
 }
 
+@media screen and (max-width: 768px) {
+  .header-collection{
+    font-size:1.2rem;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .header-collection{
+    font-size:1.2rem;
+  }
+}

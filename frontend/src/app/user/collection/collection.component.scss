@@ -78,11 +78,17 @@ h1 {
 
 @media screen and (max-width: 768px) {
   .outer-card{
-    height: 500px;
+    height: 400px;
     overflow: scroll;
+  }
+  .card-1{
+    max-height: 200px;
   }
   .hidden{
     display: none;
+  }
+  .header-collection{
+    font-size:1.2rem;
   }
 }
 
@@ -97,5 +103,15 @@ h1 {
   }
   .custom-col-12{
     padding: 0;
+  }
+  .header-collection{
+    font-size:1.2rem;
+  }
+  .outer-card{
+    height: 300px;
+    overflow: scroll;
+  }
+  .card-1{
+    max-height: 150px;
   }
 }

@@ -1,56 +1,58 @@
 <div class="row mt-3">
   <div class="col-12 d-flex justify-content-between px-0">
     <div class="row">
-      <div class="col-lg-6 col-md-12 col-sm-12 col-12 mb-3 px-0 card outer-card">
+      <div class="col-lg-6 col-md-12 col-sm-12 col-12 mb-3 px-0">
         <div class="row">
           <div class="col-12">
             <div class="col-lg-12 col-md-12 col-sm-12 col-12 hidden" id="padding-20"></div>
           </div>
         </div>
-        <div id="card-1">
-          <div class="" data-toggle="collapse" (click)="toggleIcon1()" data-target="#globalCollection">
-            <div class="card-header header-collection d-flex justify-content-between align-center">
-              <div> Global Collections</div>
-              <div><i id="chevronHiddenDown" class="fas fa-chevron-down"></i><i id="chevronHiddenUp" class="fas fa-chevron-up chevron-hidden"></i></div>
+        <div class="card outer-card">
+          <div id="card-1">
+            <div class="" data-toggle="collapse" (click)="toggleIcon1()" data-target="#globalCollection">
+              <div class="card-header header-collection d-flex justify-content-between align-center">
+                <div> Global Collections</div>
+                <div><i id="chevronHiddenDown" class="fas fa-chevron-down"></i><i id="chevronHiddenUp" class="fas fa-chevron-up chevron-hidden"></i></div>
+              </div>
+            </div>
+            <div class="card-body card-1 scrollable border-bottom collapse out" id="globalCollection">
+              <div class="row">
+                <div class="col-12">
+                  <div class="search-container">
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control" placeholder="Search collections" [(ngModel)]="searchAll">
+                      <div class="input-group-append">
+                          <button class="btn btn-primary"><i class="fa fa-search"></i></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 scrollable mt-1 pb-1">
+                  <div *ngFor="let collection of adminCollections | searchFilter: searchAll">
+                    <div class="card bg-light mb-3 collection-card">
+                      <div class="card-body">
+                        <h5 class="card-title collection text-center">{{collection.name}}</h5>
+                        <button class="btn btn-primary add-button mt-2" (click)="addCollection(collection)" [attr.disabled]="collection.disabled == true? true: null"><i class="fas fa-plus"></i></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>      
+              </div>
             </div>
           </div>
-          <div class="card-body card-1 scrollable border-bottom collapse out" id="globalCollection">
-            <div class="row">
-              <div class="col-12">
-                <div class="search-container">
-                  <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Search collections" [(ngModel)]="searchAll">
-                    <div class="input-group-append">
-                        <button class="btn btn-primary"><i class="fa fa-search"></i></button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 scrollable mt-1 pb-1">
-                <div *ngFor="let collection of adminCollections | searchFilter: searchAll">
-                  <div class="card bg-light mb-3 collection-card">
-                    <div class="card-body">
-                      <h5 class="card-title collection text-center">{{collection.name}}</h5>
-                      <button class="btn btn-primary add-button mt-2" (click)="addCollection(collection)" [attr.disabled]="collection.disabled == true? true: null"><i class="fas fa-plus"></i></button>
-                    </div>
-                  </div>
-                </div>
-              </div>      
+        <app-products class="id-2"></app-products>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-12 col-sm-12 col-12 mb-3 px-0">   
+        <div class="row">
+          <div class="col-12 custom-col-12">
+            <div class="card-body d-flex justify-content-end" id="padding-20">
+              <button (click)="toggle3()" class="btn btn-outline-dark active btn-custom" id="buttonToggle1">My Collections</button>
+              <button (click)="toggle4()" class="btn btn-outline-dark btn-custom" id="buttonToggle2">My Products</button>
             </div>
           </div>
         </div>
-        <app-products class="id-2"></app-products>
-      </div>
-      <div class="col-lg-6 col-md-12 col-sm-12 col-12 mb-3 px-0">   
         <div class="card outer-card">
-          <div class="row">
-            <div class="col-12 custom-col-12">
-              <div class="card-body d-flex justify-content-end" id="padding-20">
-                <button (click)="toggle3()" class="btn btn-outline-success active btn-custom" id="buttonToggle1">My Collections</button>
-                <button (click)="toggle4()" class="btn btn-outline-success btn-custom" id="buttonToggle2">My Products</button>
-              </div>
-            </div>
-          </div>
          <div id="myCollectionHidden" class="chevron-block">
           <div class="card-header text-center header-collection">My Collections <i class="fa fa-plus ml-2 rounded-circle bg-primary" aria-hidden="true" (click)="toggleForm()"></i></div>
           <div class="card-body">
