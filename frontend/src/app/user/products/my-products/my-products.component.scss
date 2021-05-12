@@ -58,3 +58,14 @@ h1 {
   cursor: pointer;
 }
 
+@media screen and (max-width: 768px) {
+  .header-collection{
+    font-size:1.2rem;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .header-collection{
+    font-size:1.2rem;
+  }
+}
