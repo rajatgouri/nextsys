@@ -189,23 +189,23 @@ export class CollectionComponent implements OnInit {
   toggle3() {
     this.showCollections = true;
     this.showProducts = false;
-    document.getElementById("myCollectionHidden")?.classList.toggle('chevron-block');
-    document.getElementById("myCollectionHidden")?.classList.toggle('chevron-block');
-    document.getElementById("myProductsHiddden")?.classList.toggle('chevron-hidden');
-    document.getElementById("myProductsHiddden")?.classList.toggle('chevron-block');
-    document.getElementById("buttonToggle1")?.classList.toggle('active');
-    document.getElementById("buttonToggle2")?.classList.toggle('active');
+    document.getElementById("myCollectionHidden")?.classList.remove('chevron-block');
+    document.getElementById("myCollectionHidden")?.classList.add('chevron-block');
+    document.getElementById("myProductsHiddden")?.classList.add('chevron-hidden');
+    document.getElementById("myProductsHiddden")?.classList.remove('chevron-block');
+    document.getElementById("buttonToggle1")?.classList.add('active');
+    document.getElementById("buttonToggle2")?.classList.remove('active');
   }
 
   toggle4() {
     this.showCollections = false;
     this.showProducts = true;
-    document.getElementById("myCollectionHidden")?.classList.toggle('chevron-block');
-    document.getElementById("myCollectionHidden")?.classList.toggle('chevron-hidden');
-    document.getElementById("myProductsHiddden")?.classList.toggle('chevron-block');
-    document.getElementById("myProductsHiddden")?.classList.toggle('chevron-hidden');
-    document.getElementById("buttonToggle1")?.classList.toggle('active');
-    document.getElementById("buttonToggle2")?.classList.toggle('active');
+    document.getElementById("myCollectionHidden")?.classList.remove('chevron-block');
+    document.getElementById("myCollectionHidden")?.classList.add('chevron-hidden');
+    document.getElementById("myProductsHiddden")?.classList.add('chevron-block');
+    document.getElementById("myProductsHiddden")?.classList.remove('chevron-hidden');
+    document.getElementById("buttonToggle1")?.classList.remove('active');
+    document.getElementById("buttonToggle2")?.classList.add('active');
   }
 
   addCollection(collection:any) {

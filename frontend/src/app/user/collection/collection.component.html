@@ -147,7 +147,7 @@
                                   <option *ngFor="let collection of myCollectionsProducts" [value]="collection._id">{{collection.name}}</option>
                                 </select>
                               </div>
-                              <button type="submit" class="btn btn-primary" (click)="addProduct(product._id)">Submit</button>
+                              <button type="submit" class="btn btn-primary" (click)="addProduct(product._id)">Add</button>
                               <button type="submit" class="ml-2 btn btn-danger" data-toggle="collapse" [attr.data-target]="'#demo'+ i">Close</button>
                             </form>
                           </div>
@@ -248,7 +248,7 @@
                                   <option *ngFor="let collection of myCollectionsProducts" [value]="collection._id">{{collection.name}}</option>
                                 </select>
                               </div>
-                              <button type="submit" class="btn btn-primary" (click)="addProductMobile(product._id)">Submit</button>
+                              <button type="submit" class="btn btn-primary" (click)="addProductMobile(product._id)">Add</button>
                               <button type="submit" class="ml-2 btn btn-danger" data-toggle="collapse" [attr.data-target]="'#demo'+ i">Close</button>
                             </form>
                           </div>
@@ -281,7 +281,7 @@
                         <option *ngFor="let collection of myCollectionsProducts" [value]="collection._id">{{collection.name}}</option>
                       </select>
                     </div>
-                    <button type="submit" class="btn btn-primary" (click)="submit()">Submit</button>
+                    <button type="submit" class="btn btn-primary" (click)="submit()">Add</button>
                     <button type="submit" class="ml-2 btn btn-danger" data-dismiss="modal">Close</button>
                   </form>
                 </div>
