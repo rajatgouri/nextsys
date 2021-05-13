@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Input} from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { CollectionService } from '../../services/collection.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { environment } from '../../../environments/environment';
-import { NgxSpinnerService } from "ngx-spinner";  
+import { NgxSpinnerService } from "ngx-spinner";
+import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';  
 
 @Component({
   selector: 'app-products',
@@ -13,13 +14,14 @@ import { NgxSpinnerService } from "ngx-spinner";
 export class ProductsComponent implements OnInit {
 
   allProducts : any = [];
-  searchAll = '';
-  searchMy = '';
+  searchAllPro = '';
+  searchMyPro = '';
   myProducts: any = [];
   filteredMyProducts: any = [];
-  myCollections: any = [];
+  myCollectionsProducts: any = [];
+  selectProductId = '';
   
-  collectionForm : FormGroup=new FormGroup({
+  collectionProductForm : FormGroup=new FormGroup({
     id: new FormControl(null,Validators.required)
   });
 
@@ -46,17 +48,18 @@ export class ProductsComponent implements OnInit {
   toggleIcon2() {
     document.getElementById("chevronHiddenUp2")?.classList.toggle('chevron-hidden');
     document.getElementById("chevronHiddenDown2")?.classList.toggle('chevron-hidden');
+    this.fetchProducts();
   }
 
   fetchProducts() {
     this.spinnerService.show(); 
     this.collectionService.getUserCollection(null).subscribe((res:any)=>{
-      this.myCollections = res.data;
+      this.myCollectionsProducts = res.data;
       setTimeout(() => {
         this.spinnerService.hide();
       }, 500);
       let myProducts:any = []
-      this.myCollections.forEach((c:any)=>{
+      this.myCollectionsProducts.forEach((c:any)=>{
         c.products.forEach((p:any)=>{
           myProducts.push({
             ...this.allProducts.filter((ap:any)=>ap._id === p)[0],
@@ -74,7 +77,7 @@ export class ProductsComponent implements OnInit {
   }
 
   addProduct(productId:any) {
-    const collection = this.myCollections.filter((c:any)=>c._id===this.collectionForm.value.id)[0];
+    const collection = this.myCollectionsProducts.filter((c:any)=>c._id===this.collectionProductForm.value.id)[0];
     const shouldAdd = collection? collection.products.filter((p:any)=>p===productId)[0] : false;
     if (shouldAdd) {
       this.fetchProducts();
@@ -82,7 +85,7 @@ export class ProductsComponent implements OnInit {
     } else {
       const body = {
         productId: productId,
-        collectionId: this.collectionForm.value.id
+        collectionId: this.collectionProductForm.value.id
       }
       this.productService.addToProduct(body).subscribe((res:any)=>{
         this.fetchProducts();
@@ -112,5 +115,19 @@ export class ProductsComponent implements OnInit {
 
   filterProducts(collectionId:any){
     this.filteredMyProducts = this.myProducts.filter((p:any) => p.collectionId === collectionId);
+  }
+  
+  dropProduct(event: CdkDragDrop<string[]>) {
+    console.log(event.distance);
+    if(event.distance.x< 445 || event.distance.y<-150){
+      return;
+    }
+    this.selectProductId = this.allProducts[event.currentIndex]._id;
+    console.log(this.selectProductId);
+    document.getElementById('toggleButton')?.click();
+  }
+
+  submit(){
+    this.addProduct(this.selectProductId);
   }
 }

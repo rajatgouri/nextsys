@@ -9,13 +9,20 @@
     <div class="col-12">
       <div class="search-container">
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Search products" [(ngModel)]="searchAll">
+          <input type="text" class="form-control" placeholder="Search products" [(ngModel)]="searchAllPro">
           <div class="input-group-append">
               <button class="btn btn-primary"><i class="fa fa-search"></i></button>
           </div>
         </div>
       </div>
     </div>
+    <div 
+    cdkDropList
+    #adminList="cdkDropList"
+    [cdkDropListData]="allProducts"
+    [cdkDropListConnectedTo]="['doneList']"
+    class="example-list col-12"
+    (cdkDropListDropped)="dropProduct($event)">
     <div class="col-12 scrollable">
       <table class="table responsive table-condensed" id="myTable">
         <thead>
@@ -28,12 +35,12 @@
             <th>Action</th>
           </tr>
         </thead>
-        <tbody *ngFor="let product of allProducts | searchFilter: searchAll;let i = index" class="panel">
+        <tbody *ngFor="let product of allProducts | searchFilter: searchAllPro;let i = index" class="panel border" [cdkDragDisabled]="myCollectionsProducts.length > 0 ? false: true" cdkDrag>
           <tr  >
-            <td>
-              <img class="rounded-circle shadow" height="40" width="45" [src]="product.img">
+            <td style="width:10%" class="mt-2 ml-2">
+              <img class="rounded-circle shadow mr-3" height="40" width="45" [src]="product.img">
             </td>
-            <td>
+            <td style="width:30%" class="mt-2">
               <p data-toggle="modal" class="clickable" data-target="#exampleModal">
                 {{product.name}}
               </p>
@@ -57,23 +64,23 @@
             </td>
             
             <!-- Modal -->
-            <td><a [href]="product.link">View</a></td>
-            <td class="mobile-hidden">{{product.price}}</td>
-            <td class="mobile-hidden">{{product.discount}} %</td>
-            <td class="text-success">
+            <td><a [href]="product.link" style="width:20%">View</a></td>
+            <td class="mobile-hidden mt-1" style="width:10%">{{product.price}}</td>
+            <td class="mobile-hidden mt-1"style="width:10%">{{product.discount}} %</td>
+            <td class="text-success mt-1" style="width:20%">
               <button class="btn btn-primary add-button mt-2" data-toggle="collapse" [attr.data-target]="'#demo'+ i"
-              data-parent="#myTable" [attr.disabled]="myCollections.length > 0 ? null: true"><i class="fas fa-plus"></i></button>
+              data-parent="#myTable" [attr.disabled]="myCollectionsProducts.length > 0 ? null: true"><i class="fas fa-plus"></i></button>
             </td>
           </tr>
           <tr [attr.id]="'demo'+ i" class="collapse">
             <td colspan="6" class="hiddenRow">
               <div>
                 <div class="card-body">
-                  <form [formGroup]="collectionForm">
+                  <form [formGroup]="collectionProductForm">
                     <div class="form-group dropdown">
                       <label for="exampleFormControlSelect1">Select the Collection</label>
                       <select formControlName="id" required class="form-control" placeholder="Collection" id="exampleFormControlSelect1">
-                        <option *ngFor="let collection of myCollections" [value]="collection._id">{{collection.name}}</option>
+                        <option *ngFor="let collection of myCollectionsProducts" [value]="collection._id">{{collection.name}}</option>
                       </select>
                     </div>
                     <button type="submit" class="btn btn-primary" (click)="addProduct(product._id)">Submit</button>
@@ -87,7 +94,35 @@
       </table>
     </div>
   </div>
+  </div>
 </div>
 <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
   <p style="color: white">Please Wait. </p>
 </ngx-spinner>
+<button data-toggle="modal" class="hidden" data-target="#exampleModal2" id="toggleButton"></button>
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="collectionProductForm">
+          <div class="form-group dropdown">
+            <label for="exampleFormControlSelect1">Select the Collection</label>
+            <select formControlName="id" required class="form-control" placeholder="Collection" id="exampleFormControlSelect1">
+              <option *ngFor="let collection of myCollectionsProducts" [value]="collection._id">{{collection.name}}</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary" (click)="submit()">Submit</button>
+          <button type="submit" class="ml-2 btn btn-danger" data-dismiss="modal">Close</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 module.exports = {
     database: {
         user: 'root',
-        password: '123456'
+        password: 'password'
     },
     jwt: {
         accessToken: {

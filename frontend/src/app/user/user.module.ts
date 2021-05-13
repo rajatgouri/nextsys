@@ -16,6 +16,7 @@ import { ViewProductComponent } from './products/view-product/view-product.compo
 import { SearchFilterPipe } from '../pipes/search.pipe';
 import { MyProductsComponent } from './products/my-products/my-products.component';
 import { MyCollectionsComponent } from './collection/my-collections/my-collections.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 const routes: Routes = [
   {
@@ -64,6 +65,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     FormsModule,
     NgxSpinnerModule,
+    DragDropModule
   ]
 })
 export class UserModule { }
