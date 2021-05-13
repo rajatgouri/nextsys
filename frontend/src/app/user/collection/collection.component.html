@@ -46,14 +46,14 @@
                     </div>
                   </div>
                 </div>   
-                <div class="col-12 scrollable mt-1 pb-1 hidden-non-mobile">
+                <div class="col-12 scrollable mt-1 pb-1 hidden-without">
                   <div>
                     <div *ngFor="let collection of adminCollections | searchFilter: searchAll">
                       <div class="card bg-light mb-3 collection-card draggable-card">
                         <div class="card-body d-flex justify-content-between">
-                          <span class="hidden-non-mobile">&nbsp;</span>
+                          <span class="">&nbsp;</span>
                           <h5 class="card-title collection text-center">{{collection.name}}</h5>
-                          <button class="btn btn-primary add-button mt-2 hidden-non-mobile w-10" (click)="addCollection(collection)" [attr.disabled]="collection.disabled == true? true: null"><i class="fas fa-plus"></i></button>
+                          <button class="btn btn-primary add-button mt-2 w-10" (click)="addCollection(collection)" [attr.disabled]="collection.disabled == true? true: null"><i class="fas fa-plus"></i></button>
                         </div>
                       </div>
                     </div>
@@ -68,7 +68,7 @@
               <div><i id="chevronHiddenDown" class="fas fa-chevron-down"></i><i id="chevronHiddenUp" class="fas fa-chevron-up chevron-hidden"></i></div>
             </div>
           </div>
-          <div class="card-body collapse out" id="globalProducts">
+          <div class="card-body collapse out hidden-mobile" id="globalProducts">
             <div class="row">
               <div class="col-12">
                 <div class="search-container">
@@ -163,13 +163,13 @@
           <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
             <p style="color: white">Please Wait. </p>
           </ngx-spinner>
-          <div class="card-header header-collection hidden-non-mobile" data-toggle="collapse" (click)="toggleIcon2()" data-target="#globalProducts">
+          <div class="card-header header-collection hidden-without" data-toggle="collapse" (click)="toggleIcon2()" data-target="#globalProductsMobile">
             <div class="d-flex justify-content-between align-center">
               <div> Global Products</div>
               <div><i id="chevronHiddenDown" class="fas fa-chevron-down"></i><i id="chevronHiddenUp" class="fas fa-chevron-up chevron-hidden"></i></div>
             </div>
           </div>
-          <div class="card-body collapse out" id="globalProducts">
+          <div class="card-body collapse out" id="globalProductsMobile">
             <div class="row">
               <div class="col-12">
                 <div class="search-container">
@@ -195,9 +195,9 @@
                       <th>Image</th>
                       <th>Name</th>
                       <th>Link</th>
-                      <th class="mobile-hidden">Price</th>
-                      <th class="mobile-hidden">Discount</th>
-                      <th class="hidden-non-mobile">Action</th>
+                      <th class="hidden-mobile">Price</th>
+                      <th class="hidden-mobile">Discount</th>
+                      <th>Action</th>
                     </tr>
                   </thead>
                   <tbody *ngFor="let product of allProducts | searchFilter: searchAll;let i = index" class="panel border" style="height: 150px !important; margin-bottom: 20px;background-color: white;" (click)="setDisabledDrag(product._id)">
@@ -230,9 +230,9 @@
                       
                       <!-- Modal -->
                       <td><a [href]="product.link" style="width:20%">View</a></td>
-                      <td class="mobile-hidden mt-1" style="width:10%">{{product.price}}</td>
-                      <td class="mobile-hidden mt-1"style="width:10%">{{product.discount}} %</td>
-                      <td class="text-success mt-1 hidden-non-mobile" style="width:20%">
+                      <td class="hidden-mobile mt-1" style="width:10%">{{product.price}}</td>
+                      <td class="hidden-mobile mt-1"style="width:10%">{{product.discount}} %</td>
+                      <td class="text-success mt-1" style="width:20%">
                         <button class="btn btn-primary add-button mt-2" data-toggle="collapse" [attr.data-target]="'#demo'+ i"
                         data-parent="#myTable" [attr.disabled]="myCollections.length > 0 ? null: true"><i class="fas fa-plus"></i></button>
                       </td>
@@ -248,7 +248,7 @@
                                   <option *ngFor="let collection of myCollectionsProducts" [value]="collection._id">{{collection.name}}</option>
                                 </select>
                               </div>
-                              <button type="submit" class="btn btn-primary" (click)="addProduct(product._id)">Submit</button>
+                              <button type="submit" class="btn btn-primary" (click)="addProductMobile(product._id)">Submit</button>
                               <button type="submit" class="ml-2 btn btn-danger" data-toggle="collapse" [attr.data-target]="'#demo'+ i">Close</button>
                             </form>
                           </div>

@@ -79,9 +79,14 @@ h1 {
   font-family: 'Poppins', sans-serif !important;
   font-weight: bold;
   font-size: 2rem;
+
 }
 
 .hidden-non-mobile{
+  display: none !important;
+}
+
+.hidden-without{
   display: none;
 }
 
@@ -108,14 +113,14 @@ h1 {
   .outer-card{
     height: 100%;
   }
-  .hidden{
-    display: none;
-  }
   .header-collection{
     font-size:1.2rem;
   }
   .hidden-non-mobile{
-    display: block;
+    display: inline
+  }
+  .hidden-without{
+    display: inline;
   }
 }
 
@@ -136,5 +141,8 @@ h1 {
   }
   .outer-card{
     height: 100%;
+  }
+  .hidden-non-mobile{
+    display: inline
   }
 }

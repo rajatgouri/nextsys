@@ -120,6 +120,24 @@ export class CollectionComponent implements OnInit {
     }
   }
 
+  addProductMobile(productId:any) {
+    const collection = this.myCollectionsProducts.filter((c:any)=>c._id===this.collectionProductForm.value.id)[0];
+    const shouldAdd = collection? collection.products.filter((p:any)=>p===productId)[0] : false;
+    console.log(collection);
+    if (shouldAdd) {
+      this.fetchProducts();
+      return ;
+    } else {
+      const body = {
+        productId: productId,
+        collectionId: this.collectionProductForm.value.id
+      }
+      this.productService.addToProduct(body).subscribe((res:any)=>{
+        this.fetchProducts();
+      })
+    }
+  }
+
   removeProduct(collectionId:any,productId:any) {
     this.productService.removeProduct(collectionId,productId).subscribe((res:any)=>{
       this.fetchProducts();
@@ -141,12 +159,7 @@ export class CollectionComponent implements OnInit {
   }
 
   setDisabledDrag(id:any) {
-    this.allProducts.map((p:any)=>{
-      return {
-        ...p,
-        "disabled" : p._id == id ? false : true
-      }
-    })
+    return ;
   }
   
   dropProduct(event: CdkDragDrop<string[]>) {
@@ -187,12 +200,12 @@ export class CollectionComponent implements OnInit {
   toggle4() {
     this.showCollections = false;
     this.showProducts = true;
-    document.getElementById("myCollectionHidden")?.classList.remove('chevron-block');
-    document.getElementById("myCollectionHidden")?.classList.add('chevron-hidden');
-    document.getElementById("myProductsHiddden")?.classList.add('chevron-block');
-    document.getElementById("myProductsHiddden")?.classList.remove('chevron-hidden');
-    document.getElementById("buttonToggle1")?.classList.remove('active');
-    document.getElementById("buttonToggle2")?.classList.add('active');
+    document.getElementById("myCollectionHidden")?.classList.toggle('chevron-block');
+    document.getElementById("myCollectionHidden")?.classList.toggle('chevron-hidden');
+    document.getElementById("myProductsHiddden")?.classList.toggle('chevron-block');
+    document.getElementById("myProductsHiddden")?.classList.toggle('chevron-hidden');
+    document.getElementById("buttonToggle1")?.classList.toggle('active');
+    document.getElementById("buttonToggle2")?.classList.toggle('active');
   }
 
   addCollection(collection:any) {
