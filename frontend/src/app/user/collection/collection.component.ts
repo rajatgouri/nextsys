@@ -189,12 +189,12 @@ export class CollectionComponent implements OnInit {
   toggle3() {
     this.showCollections = true;
     this.showProducts = false;
-    document.getElementById("myCollectionHidden")?.classList.remove('chevron-block');
-    document.getElementById("myCollectionHidden")?.classList.add('chevron-block');
-    document.getElementById("myProductsHiddden")?.classList.add('chevron-hidden');
-    document.getElementById("myProductsHiddden")?.classList.remove('chevron-block');
-    document.getElementById("buttonToggle1")?.classList.add('active');
-    document.getElementById("buttonToggle2")?.classList.remove('active');
+    document.getElementById("myCollectionHidden")?.classList.toggle('chevron-block');
+    document.getElementById("myCollectionHidden")?.classList.toggle('chevron-block');
+    document.getElementById("myProductsHiddden")?.classList.toggle('chevron-hidden');
+    document.getElementById("myProductsHiddden")?.classList.toggle('chevron-block');
+    document.getElementById("buttonToggle1")?.classList.toggle('active');
+    document.getElementById("buttonToggle2")?.classList.toggle('active');
   }
 
   toggle4() {
@@ -219,6 +219,7 @@ export class CollectionComponent implements OnInit {
         _key: res.data._key,
         _id: res.data._id 
       });
+      this.fetchProducts();
       this.setDisabled(this.myCollections,this.adminCollections);
     })
   }
@@ -226,6 +227,7 @@ export class CollectionComponent implements OnInit {
   removeCollection(collection:any) {
     console.log(collection)
     this.collectionService.removeCollection(collection._key).subscribe((res:any)=>{
+      this.fetchProducts();
       this.myCollections = this.myCollections.filter((c:any)=>c._id!==collection._id)
       this.setDisabled(this.myCollections,this.adminCollections);
     })
